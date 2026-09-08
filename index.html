@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>West Tide Studio — Maison d'édition d'applications mobiles</title>
+  <meta name="description" content="West Tide Studio est une maison d'édition indépendante d'applications mobiles, basée à Nantes.">
+  <link rel="icon" type="image/svg+xml" href="/assets/monogram-wts.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,500,800&display=swap">
+
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <img src="/assets/logo-westtide.png" alt="West Tide Studio" class="logo-img" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:'West Tide Studio'}))">
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#apps">Apps</a>
+        <a href="#studio">Studio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">Maison d'édition indépendante — Nantes, France</p>
+        <h1>Des applications mobiles pensées pour durer.</h1>
+        <p class="hero-lead">
+          West Tide Studio conçoit et publie des applications mobiles sur l'App Store
+          et Google Play, depuis Nantes, pour les marchés français et américain.
+        </p>
+      </div>
+    </section>
+
+    <section class="apps" id="apps">
+      <div class="container">
+        <p class="eyebrow">Applications</p>
+        <h2>Ce que nous publions</h2>
+
+        <div class="apps-grid">
+          <article class="app-card">
+            <div class="app-card-header">
+              <h3>SpotScout</h3>
+              <span class="badge">À venir</span>
+            </div>
+            <p>Une application outdoor. Bientôt disponible sur l'App Store et Google Play.</p>
+          </article>
+
+          <article class="app-card app-card-placeholder">
+            <div class="app-card-header">
+              <h3>Prochaine application</h3>
+              <span class="badge badge-muted">En préparation</span>
+            </div>
+            <p>D'autres applications suivront.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="studio" id="studio">
+      <div class="container studio-inner">
+        <p class="eyebrow">Le studio</p>
+        <h2>Un studio indépendant, pas un label.</h2>
+        <p>
+          West Tide Studio est une maison d'édition indépendante basée à Nantes.
+          Nous concevons et publions nos propres applications mobiles, pensées
+          pour durer plutôt que pour suivre les tendances.
+        </p>
+        <p>
+          Chaque application est développée avec le même soin, du premier
+          croquis à sa publication sur l'App Store et Google Play.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-inner">
+        <p class="eyebrow">Contact</p>
+        <h2>Nous écrire</h2>
+        <a href="mailto:contact@westtidestudio.com" class="btn btn-primary btn-large">
+          contact@westtidestudio.com
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="/assets/monogram-wts.svg" alt="West Tide Studio" class="footer-logo" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:'WTS'}))">
+        <span>© <span id="year"></span> West Tide Studio</span>
+      </div>
+
+      <nav class="footer-legal">
+        <a href="/mentions-legales.html">Mentions légales</a>
+        <a href="/confidentialite.html">Confidentialité</a>
+        <a href="/cgu.html">CGU</a>
+      </nav>
+
+      <div class="footer-social">
+        <a href="#" data-social="instagram" aria-label="Instagram">Instagram</a>
+        <a href="#" data-social="linkedin" aria-label="LinkedIn">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
