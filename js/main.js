@@ -19,3 +19,8 @@ if (navToggle && nav) {
     });
   });
 }
+
+// Liens des stores pas encore publiés : ils ne mènent nulle part.
+document.querySelectorAll("[data-store]").forEach((link) => {
+  link.addEventListener("click", (event) => event.preventDefault());
+});
