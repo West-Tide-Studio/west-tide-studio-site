@@ -344,6 +344,21 @@ a {
   text-decoration: underline;
 }
 
+.legal article p + p {
+  margin-top: 12px;
+}
+
+.legal article ul {
+  padding-left: 20px;
+  list-style: disc;
+  color: var(--color-ink);
+  font-size: 15px;
+}
+
+.legal article li + li {
+  margin-top: 6px;
+}
+
 /* Footer */
 
 .site-footer {
