@@ -359,6 +359,16 @@ a {
   margin-top: 6px;
 }
 
+.legal article h3 {
+  font-size: 16px;
+  margin: 20px 0 8px;
+}
+
+.legal article ul + p,
+.legal article p + ul {
+  margin-top: 12px;
+}
+
 /* Footer */
 
 .site-footer {
