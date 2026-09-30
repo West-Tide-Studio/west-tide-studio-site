@@ -464,3 +464,20 @@ a {
     align-items: flex-start;
   }
 }
+
+/* Mentions légales : un texte long, en petits caractères, mais lisible
+   (13 px) — la loi demande des informations « facilement accessibles ». */
+
+.legal--dense article {
+  margin-bottom: 24px;
+}
+
+.legal--dense article h2 {
+  font-size: 15px;
+}
+
+.legal--dense article p,
+.legal--dense article ul {
+  font-size: 13px;
+  line-height: 1.6;
+}
