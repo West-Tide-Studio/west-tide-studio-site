@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>West Tide Studio — Maison d'édition d'applications mobiles</title>
-  <meta name="description" content="West Tide Studio est une maison d'édition indépendante d'applications mobiles, basée à Nantes.">
+  <title>West Tide Studio — Applications mobiles, côte atlantique</title>
+  <meta name="description" content="West Tide Studio conçoit et publie des applications mobiles depuis Nantes, sur la côte atlantique. Première app : RideSeek, les spots de surf et de skate.">
   <link rel="icon" type="image/png" href="/assets/monogram-wts.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@700,500,800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 
-  <header class="site-header" id="header">
+  <header class="site-header site-header--over" id="header">
     <div class="container header-inner">
       <a href="/" class="logo">
-        <img src="/assets/logo-westtide.png" alt="West Tide Studio" class="logo-img" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:'West Tide Studio'}))">
+        <img src="/assets/logo-westtide.png" alt="West Tide Studio" class="logo-img">
       </a>
 
       <nav class="nav" id="nav">
@@ -35,66 +34,65 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container hero-inner">
-        <p class="eyebrow">Maison d'édition indépendante — Nantes, France</p>
-        <h1>Des applications mobiles pensées pour durer.</h1>
-        <p class="hero-lead">
-          West Tide Studio conçoit et publie des applications mobiles sur l'App Store
-          et Google Play, depuis Nantes, pour les marchés français et américain.
+    <section class="swell-hero">
+      <svg class="swell-field" aria-hidden="true"></svg>
+      <div class="container swell-hero-inner">
+        <h1 class="display">Des apps nées face à l'Atlantique.</h1>
+        <p class="swell-hero-lead">
+          West Tide Studio conçoit et publie ses propres applications mobiles,
+          depuis Nantes. Peu d'apps, faites avec soin, pour les gens qui vivent
+          dehors.
         </p>
       </div>
+      <p class="coords" aria-hidden="true">47°13′ N · 1°33′ O</p>
     </section>
 
-    <section class="apps" id="apps">
+    <section class="section" id="apps">
       <div class="container">
-        <p class="eyebrow">Applications</p>
-        <h2>Ce que nous publions</h2>
+        <h2 class="section-title">Ce que nous publions</h2>
 
-        <div class="apps-grid">
-          <a href="/rideseek.html" class="app-card app-card-link">
-            <div class="app-card-header">
-              <h3>RideSeek</h3>
-              <span class="badge">À venir</span>
-            </div>
-            <p>Les spots de surf et de skate autour de toi, avec la houle, le vent et les marées heure par heure. Bientôt disponible sur l'App Store et Google Play.</p>
-            <span class="app-card-more">Découvrir l'app →</span>
-          </a>
-
-          <article class="app-card app-card-placeholder">
-            <div class="app-card-header">
-              <h3>Prochaine application</h3>
-              <span class="badge badge-muted">En préparation</span>
-            </div>
-            <p>D'autres applications suivront.</p>
-          </article>
-        </div>
+        <a href="/rideseek.html" class="app-feature">
+          <span class="app-feature-mark">
+            <img src="/assets/Logo%20simple%20512x512.png" alt="" width="288" height="400">
+          </span>
+          <span>
+            <h3 class="display">RideSeek</h3>
+            <p>Les spots de surf et de skate autour de toi, avec la houle, le vent, la
+            marée et son coefficient, heure par heure.</p>
+            <span class="app-feature-status">Bientôt sur Google Play</span>
+            <span class="app-feature-cta">Découvrir RideSeek</span>
+          </span>
+        </a>
       </div>
     </section>
 
-    <section class="studio" id="studio">
-      <div class="container studio-inner">
-        <p class="eyebrow">Le studio</p>
-        <h2>Un studio indépendant, pas un label.</h2>
-        <p>
-          West Tide Studio est une maison d'édition indépendante basée à Nantes.
-          Nous concevons et publions nos propres applications mobiles, pensées
-          pour durer plutôt que pour suivre les tendances.
-        </p>
-        <p>
-          Chaque application est développée avec le même soin, du premier
-          croquis à sa publication sur l'App Store et Google Play.
-        </p>
+    <section class="section studio" id="studio">
+      <div class="container studio-grid">
+        <div>
+          <h2 class="display">Un studio, pas une usine.</h2>
+          <p>
+            West Tide Studio est une maison d'édition indépendante. Chaque application
+            est pensée, dessinée, développée et publiée ici, du premier croquis à la
+            mise en ligne sur les stores.
+          </p>
+          <p>
+            On préfère une app qui sert vraiment à dix qui se ressemblent : pas de
+            publicité, pas de revente de données, et des apps qui durent.
+          </p>
+        </div>
+        <ul class="studio-facts">
+          <li><b>Basé à</b><span>Nantes, à une heure de l'océan</span></li>
+          <li><b>Plateformes</b><span>Android, puis iPhone</span></li>
+          <li><b>Marchés</b><span>France, Belgique, Québec</span></li>
+          <li><b>Première app</b><span>RideSeek, automne 2026</span></li>
+        </ul>
       </div>
     </section>
 
     <section class="contact" id="contact">
-      <div class="container contact-inner">
-        <p class="eyebrow">Contact</p>
-        <h2>Nous écrire</h2>
-        <a href="mailto:contact@westtidestudio.com" class="btn btn-primary btn-large">
-          contact@westtidestudio.com
-        </a>
+      <div class="container">
+        <h2>Une idée, une question, un partenariat ?</h2>
+        <a href="mailto:contact@westtidestudio.com" class="contact-mail">contact@westtidestudio.com</a>
       </div>
     </section>
   </main>
@@ -102,7 +100,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <img src="/assets/monogram-wts.png" alt="West Tide Studio" class="footer-logo" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-fallback',textContent:'WTS'}))">
+        <img src="/assets/monogram-wts.png" alt="West Tide Studio" class="footer-logo">
         <span>© <span id="year"></span> West Tide Studio</span>
       </div>
 
@@ -113,12 +111,13 @@
       </nav>
 
       <div class="footer-social">
-        <a href="#" data-social="instagram" aria-label="Instagram">Instagram</a>
-        <a href="#" data-social="linkedin" aria-label="LinkedIn">LinkedIn</a>
+        <a href="#" data-social="instagram">Instagram</a>
+        <a href="#" data-social="linkedin">LinkedIn</a>
       </div>
     </div>
   </footer>
 
   <script src="/js/main.js"></script>
+  <script src="/js/swell.js"></script>
 </body>
 </html>
