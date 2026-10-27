@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Un spot partagé sur RideSeek | West Tide Studio</title>
+  <meta name="description" content="Un rider t'a partagé un spot de surf ou de skate sur RideSeek : la houle, le vent et la marée, heure par heure.">
+  <!-- Une page par lien partagé, toutes identiques pour Google : pas d'indexation. -->
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/assets/Logo%20simple%20512x512.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Permanent+Marker&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/rideseek.css">
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="init push capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureFlagEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset isIdentified removeCapturedEventCallback getRemoteConfig".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||(window.posthog=[]));
+    posthog.init('phc_wFN9BkVgBuoKk4JwGHN5Sdj8BKcPyCkNKsmsVLN5mBnj', {
+      api_host: 'https://eu.i.posthog.com',
+      person_profiles: 'identified_only',
+      persistence: 'memory',
+    });
+  </script>
+  <style>
+    .rs-partage { min-height: 70vh; display: flex; align-items: center; text-align: center; padding: 48px 0; }
+    .rs-partage .container { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    /* En colonne centrée, un enfant prend sa largeur naturelle et déborde d'un téléphone. */
+    .rs-partage .container > * { max-width: 100%; }
+    .rs-partage .rs-stores { width: 100%; }
+    .rs-partage h1 { margin: 0; overflow-wrap: anywhere; }
+    .rs-partage .rs-hero-lead { max-width: 34rem; margin: 0; }
+    .rs-ouvrir { background: var(--rs-bleu); }
+    .rs-ouvrir:hover { background: var(--rs-nuit); }
+  </style>
+</head>
+<body class="rs">
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="/rideseek.html" class="logo">
+        <img src="/assets/logo-westtide.png" alt="West Tide Studio" class="logo-img">
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!--
+      La page des liens « Partager ce spot » de l'appli (27 oct. 2026) :
+      /rideseek/spot/?id=<uuid>&nom=<nom du spot>.
+
+      Pour l'instant elle propose d'ouvrir le spot dans l'appli si elle est
+      installée, sinon de l'installer. Quand l'appli déclarera ces liens comme
+      les siens (App Links, build 6), Android ouvrira l'appli directement sans
+      passer par cette page — il faudra alors publier
+      /.well-known/assetlinks.json sur ce site.
+    -->
+    <section class="rs-partage">
+      <div class="container">
+        <p class="rs-brand">
+          <img src="/assets/Logo%20simple%20512x512.png" alt="" width="64" height="89">
+          <span>RideSeek</span>
+        </p>
+        <p class="rs-scribble marker">un pote t'a partagé un spot</p>
+        <h1 class="display" id="nom">Ton prochain spot</h1>
+        <p class="rs-hero-lead">
+          Ouvre-le dans RideSeek : la houle, le vent, la marée et son coefficient,
+          heure par heure, et le meilleur créneau des trois prochains jours.
+        </p>
+
+        <div class="rs-stores">
+          <a href="#" class="rs-store rs-ouvrir" id="ouvrir" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+            <span><small>Déjà installée ?</small>Ouvrir le spot</span>
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.westtidestudio.rideseek" class="rs-store" id="play">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.2c-.3.3-.4.7-.4 1.2v17.2c0 .5.1.9.4 1.2l9.6-9.8-9.6-9.8zm10.8 11L16.9 16 5.4 22.4l9-9.2zm0-2.4-9-9.2L16.9 8l-2.5 2.8zm3.7-2.1 2.9 1.6c.9.5.9 1.3 0 1.8l-2.9 1.6-2.7-2.5 2.7-2.5z"/></svg>
+            <span><small>Gratuit sur</small>Google Play</span>
+          </a>
+        </div>
+        <p class="rs-soon">Sur Android. iPhone ensuite.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="/assets/monogram-wts.png" alt="West Tide Studio" class="footer-logo">
+        <span>© <span id="year"></span> West Tide Studio</span>
+      </div>
+
+      <nav class="footer-legal">
+        <a href="/rideseek.html">RideSeek</a>
+        <a href="/rideseek-confidentialite.html">Confidentialité</a>
+        <a href="/mentions-legales.html">Mentions légales</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const id = params.get("id") || "";
+      const nom = (params.get("nom") || "").slice(0, 120);
+      // Le nom vient du lien : posé en texte, jamais en HTML.
+      if (nom) {
+        document.getElementById("nom").textContent = nom;
+        document.title = nom + " — un spot partagé sur RideSeek";
+      }
+      if (window.posthog) posthog.capture("spot_partage_ouvert");
+      // Seul un identifiant de spot bien formé part vers l'appli.
+      if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) return;
+      if (!/Android/i.test(navigator.userAgent)) return;
+      // Sur Android, un lien « intent » ouvre l'appli sur le spot si elle est là,
+      // et la fiche Google Play sinon.
+      const play = document.getElementById("play").href;
+      const ouvrir = document.getElementById("ouvrir");
+      ouvrir.href = "intent://spot/" + id + "#Intent;scheme=rideseek;package=com.westtidestudio.rideseek;" +
+        "S.browser_fallback_url=" + encodeURIComponent(play) + ";end";
+      ouvrir.hidden = false;
+    })();
+  </script>
+</body>
+</html>

@@ -21,6 +21,6 @@ if (navToggle && nav) {
 }
 
 // Liens des stores pas encore publiés : ils ne mènent nulle part.
-document.querySelectorAll("[data-store]").forEach((link) => {
+document.querySelectorAll('[data-store][aria-disabled="true"]').forEach((link) => {
   link.addEventListener("click", (event) => event.preventDefault());
 });
