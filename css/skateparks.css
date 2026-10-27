@@ -1,0 +1,272 @@
+/*
+ * Les pages « Skateparks » (/rideseek/skateparks/), fabriquées par
+ * where2ride/scripts/build-skatepark-pages.mjs. Le côté béton de RideSeek :
+ * des listes à lire vite sur un téléphone, au bord d'un park.
+ */
+
+.sk-tete {
+  padding: 40px 0 32px;
+  background:
+    radial-gradient(90% 80% at 100% 0%, rgba(240, 138, 36, 0.16), transparent 60%),
+    var(--rs-papier);
+}
+
+.sk-fil {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: #4a5b80;
+}
+
+.sk-fil a {
+  color: var(--rs-bleu);
+}
+
+.sk-surtitre {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #4a5b80;
+}
+
+.sk-tete h1 {
+  margin: 0 0 16px;
+  font-size: clamp(36px, 6vw, 72px);
+  color: var(--rs-nuit);
+  overflow-wrap: anywhere;
+}
+
+.sk-chapo {
+  max-width: 60ch;
+  margin: 0;
+  font-size: clamp(17px, 1.5vw, 19px);
+  color: #34466e;
+}
+
+.sk-section {
+  padding: 24px 0;
+}
+
+.sk-section h2 {
+  font-size: clamp(26px, 3.4vw, 40px);
+  margin: 0 0 16px;
+}
+
+.sk-section h2 small {
+  font-size: 0.5em;
+  font-weight: 600;
+  font-style: normal;
+  color: #4a5b80;
+}
+
+/* L'index des communes d'un département : des étiquettes qui renvoient plus bas. */
+.sk-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sk-index a {
+  padding: 6px 12px;
+  border: 1px solid #c9d2e3;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--rs-nuit);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.sk-index a:hover {
+  border-color: var(--rs-bleu);
+  color: var(--rs-bleu);
+}
+
+.sk-commune {
+  padding: 24px 0 8px;
+  border-top: 2px solid var(--rs-nuit);
+  scroll-margin-top: 16px;
+}
+
+.sk-commune h2 {
+  font-size: clamp(22px, 2.6vw, 30px);
+  margin-bottom: 12px;
+}
+
+.sk-commune-lien {
+  margin: 0 0 16px;
+}
+
+.sk-commune-lien a,
+.sk-retour a {
+  color: var(--rs-bleu);
+  font-weight: 600;
+}
+
+.sk-parks {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 12px;
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.sk-park {
+  padding: 16px;
+  border: 1px solid #d8deea;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.sk-park-tete {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.sk-park h3 {
+  margin: 0;
+  font-size: 18px;
+  font-style: normal;
+  overflow-wrap: anywhere;
+}
+
+.sk-type {
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--rs-nuit);
+}
+
+/* Les couleurs des épingles de l'app : orange le skate. */
+.sk-type-skate { background: #fbd7b0; }
+.sk-type-pump { background: #d8e9c4; }
+
+.sk-note {
+  margin-left: auto;
+  font-weight: 700;
+  color: #8a5a00;
+}
+
+.sk-note small {
+  font-weight: 500;
+  color: #4a5b80;
+}
+
+.sk-adresse,
+.sk-details {
+  margin: 8px 0 0;
+  font-size: 15px;
+  color: #34466e;
+}
+
+.sk-details code {
+  font-size: 13px;
+}
+
+.sk-liens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 12px 0 0;
+}
+
+.sk-liens a {
+  color: var(--rs-bleu);
+  font-weight: 600;
+}
+
+/* Les communes voisines, et les groupes de l'accueil. */
+.sk-communes,
+.sk-groupes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  gap: 4px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sk-communes li,
+.sk-groupes li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #d8deea;
+}
+
+.sk-communes a,
+.sk-groupes a {
+  color: var(--rs-nuit);
+  font-weight: 600;
+}
+
+.sk-communes span,
+.sk-groupes span {
+  color: #4a5b80;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.sk-region {
+  margin-bottom: 24px;
+}
+
+.sk-region h3 {
+  margin: 16px 0 4px;
+  font-size: 18px;
+  font-style: normal;
+}
+
+.sk-appel {
+  margin-top: 40px;
+  padding: 56px 0;
+  background: linear-gradient(180deg, #e3f3fb, var(--rs-papier));
+  text-align: center;
+}
+
+.sk-appel .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.sk-appel .container > * {
+  max-width: 100%;
+}
+
+.sk-appel .rs-brand {
+  margin: 0;
+}
+
+.sk-appel p {
+  max-width: 44ch;
+  margin: 0;
+  font-size: 18px;
+  color: #34466e;
+}
+
+.sk-appel .rs-soon {
+  margin: 0;
+  font-size: 15px;
+}
+
+.site-footer a {
+  color: inherit;
+}
+
+@media (max-width: 560px) {
+  .container {
+    padding: 0 16px;
+  }
+}
