@@ -223,7 +223,7 @@
     }
     calque?.remove();
     calque = L.layerGroup().addTo(carte);
-    const cercle = L.circle([centre.lat, centre.lon], {
+    L.circle([centre.lat, centre.lon], {
       radius: km * 1000,
       color: "#1e6fd9",
       weight: 2,
@@ -244,7 +244,9 @@
         )
         .addTo(calque);
     }
-    const cadre = cercle.getBounds();
+    // Pas cercle.getBounds() : il lui faut une carte déjà cadrée, et au premier
+    // dessin elle ne l'est pas encore (la carte restait grise).
+    const cadre = L.latLng(centre.lat, centre.lon).toBounds(km * 2000);
     for (const p of montres) cadre.extend([p.lat, p.lon]);
     carte.invalidateSize();
     carte.fitBounds(cadre, { padding: [16, 16] });
