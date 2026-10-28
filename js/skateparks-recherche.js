@@ -6,6 +6,8 @@
  * les pages (where2ride/scripts/build-skatepark-pages.mjs). Les communes
  * françaises sans park viennent de geo.api.gouv.fr, gratuit et sans clé.
  * La carte : Leaflet et les tuiles OpenStreetMap, chargés au premier choix.
+ * Chaque recherche part dans PostHog (`skatepark_recherche`) : d'où viennent
+ * les gens, et où il manque des parks.
  */
 (() => {
   const bloc = document.querySelector("[data-recherche]");
@@ -161,18 +163,18 @@
     afficher([]);
     champ.blur();
     resultat.hidden = false;
-    dessiner();
+    dessiner("ville");
   }
 
   rayons.forEach((b) =>
     b.addEventListener("click", () => {
       km = +b.dataset.km;
       rayons.forEach((r) => r.setAttribute("aria-pressed", String(r === b)));
-      dessiner();
+      dessiner("rayon");
     }),
   );
 
-  async function dessiner() {
+  async function dessiner(declencheur) {
     const [{ lieux, parks }, L] = await Promise.all([chargerIndex(), chargerLeaflet()]);
     const centre = { lat: ville.lat, lon: ville.lon };
     const tous = parks
@@ -180,6 +182,15 @@
       .sort((a, b) => a.d - b.d);
     const dedans = tous.filter((p) => p.d <= km);
     const montres = dedans.length ? dedans : tous.slice(0, AU_MOINS);
+
+    window.posthog?.capture?.("skatepark_recherche", {
+      ville: ville.nom,
+      zone: ville.groupe,
+      rayon_km: km,
+      parks_trouves: dedans.length,
+      plus_proche_km: tous.length ? Math.round(tous[0].d * 10) / 10 : null,
+      declencheur,
+    });
 
     titre.textContent = dedans.length
       ? `${dedans.length} park${dedans.length > 1 ? "s" : ""} à moins de ${km} km de ${ville.nom}`
