@@ -33,11 +33,24 @@
 <body class="rs">
   <!-- Page fabriquée par where2ride/scripts/build-skatepark-pages.mjs : ne pas modifier à la main. -->
 
-  <header class="site-header">
+  <header class="site-header" id="header">
     <div class="container header-inner">
-      <a href="/rideseek.html" class="logo">
+      <a href="/" class="logo">
         <img src="/assets/logo-westtide.png" alt="West Tide Studio" class="logo-img">
       </a>
+
+      <nav class="nav sk-nav" id="nav">
+        <a href="/rideseek.html" class="sk-nav-app">
+          <img src="/assets/Logo%20simple%20512x512.png" alt="" width="20" height="28">
+          RideSeek
+        </a>
+        <a href="/rideseek/skateparks/">Skateparks</a>
+        <a href="https://play.google.com/store/apps/details?id=com.westtidestudio.rideseek" class="sk-nav-play">Télécharger</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
@@ -50,6 +63,25 @@
         <p class="sk-surtitre">Normandie · France</p>
         <h1 class="display">Seine-Maritime (76)</h1>
         <p class="sk-chapo">47 skateparks et 9 pumptracks dans 48 communes. Les mieux équipées : Le Tréport (3), Rouen (3), Bolbec (2).</p>
+        
+        <div class="sk-recherche" data-recherche>
+          <label class="sk-recherche-label" for="sk-ville">Des parks près de chez toi</label>
+          <div class="sk-recherche-champ">
+            <input id="sk-ville" type="search" placeholder="Cherche une ville…" autocomplete="off"
+              role="combobox" aria-expanded="false" aria-controls="sk-suggestions" aria-autocomplete="list">
+            <ul id="sk-suggestions" class="sk-suggestions" role="listbox" hidden></ul>
+          </div>
+          <div class="sk-resultat" hidden>
+            <div class="sk-rayons" role="group" aria-label="Distance">
+              <button type="button" data-km="5">5 km</button>
+              <button type="button" data-km="10" aria-pressed="true">10 km</button>
+              <button type="button" data-km="20">20 km</button>
+            </div>
+            <div class="sk-carte" aria-label="Carte des parks autour"></div>
+            <p class="sk-resultat-titre" aria-live="polite"></p>
+            <ul class="sk-autour"></ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1000,13 +1032,34 @@
       </div>
     </section>
 
-    <section class="sk-appel">
+    <section class="rs-section rs-concrete beton sk-appel">
       <div class="container">
         <p class="rs-brand">
           <img src="/assets/Logo%20simple%20512x512.png" alt="" width="64" height="89">
           <span>RideSeek</span>
         </p>
-        <p>Tous ces parks sur une seule carte, avec les spots de surf, la houle, le vent et la marée. Gratuit.</p>
+        <h2 class="display">Le park est sec&nbsp;?</h2>
+        <p class="rs-intro">Tous ces parks sur une seule carte, dans ta poche. Avant de sortir la board,
+        l'app te dit s'il fait beau, et si on peut rider.</p>
+
+        <div class="rs-stickers">
+          <article class="rs-sticker">
+            <h3>Plus de 6&nbsp;000 spots</h3>
+            <p>Skateparks, bowls, pumptracks et spots street, en France, en Belgique et au Québec,
+            du plus proche au plus loin.</p>
+          </article>
+          <article class="rs-sticker">
+            <h3>Praticable ou pas</h3>
+            <p>Une ligne qui tranche, praticable ou pluie annoncée, avec la température et le vent,
+            sur trois jours.</p>
+          </article>
+          <article class="rs-sticker">
+            <h3>Par les riders</h3>
+            <p>Note les parks, ajoute tes photos et tes spots, garde tes favoris. Et côté océan,
+            la houle, le vent et la marée.</p>
+          </article>
+        </div>
+
         <div class="rs-stores">
           <a href="https://play.google.com/store/apps/details?id=com.westtidestudio.rideseek" class="rs-store">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.2c-.3.3-.4.7-.4 1.2v17.2c0 .5.1.9.4 1.2l9.6-9.8-9.6-9.8zm10.8 11L16.9 16 5.4 22.4l9-9.2zm0-2.4-9-9.2L16.9 8l-2.5 2.8zm3.7-2.1 2.9 1.6c.9.5.9 1.3 0 1.8l-2.9 1.6-2.7-2.5 2.7-2.5z"/></svg>
@@ -1035,5 +1088,6 @@
   </footer>
 
   <script src="/js/main.js"></script>
+  <script src="/js/skateparks-recherche.js" defer></script>
 </body>
 </html>

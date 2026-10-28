@@ -229,36 +229,198 @@
 
 .sk-appel {
   margin-top: 40px;
-  padding: 56px 0;
-  background: linear-gradient(180deg, #e3f3fb, var(--rs-papier));
-  text-align: center;
-}
-
-.sk-appel .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-
-.sk-appel .container > * {
-  max-width: 100%;
+  padding: 88px 0;
 }
 
 .sk-appel .rs-brand {
-  margin: 0;
+  margin: 0 0 16px;
 }
 
-.sk-appel p {
-  max-width: 44ch;
-  margin: 0;
-  font-size: 18px;
-  color: #34466e;
+.sk-appel .rs-intro {
+  margin-bottom: 40px;
+}
+
+.sk-appel .rs-stores {
+  margin-top: 48px;
 }
 
 .sk-appel .rs-soon {
-  margin: 0;
+  margin: 12px 0 0;
   font-size: 15px;
+}
+
+/* La barre du haut : RideSeek, les parks, et le bouton de l'app. */
+.sk-nav {
+  align-items: center;
+}
+
+.sk-nav-app {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 1 !important;
+}
+
+.sk-nav-play {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--rs-bleu);
+  color: #fff;
+  opacity: 1 !important;
+}
+
+.sk-nav-play:hover {
+  background: var(--rs-ciel);
+}
+
+/* La recherche par ville, et la carte des parks autour. */
+.sk-recherche {
+  max-width: 720px;
+  margin-top: 28px;
+}
+
+.sk-recherche-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.sk-recherche-champ {
+  position: relative;
+}
+
+.sk-recherche input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid var(--rs-nuit);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--rs-nuit);
+  font: inherit;
+  font-size: 18px;
+}
+
+.sk-recherche input:focus {
+  outline: 3px solid rgba(30, 111, 217, 0.35);
+  outline-offset: 1px;
+}
+
+.sk-suggestions {
+  position: absolute;
+  z-index: 1000;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 6px 0;
+  border: 1px solid #c9d2e3;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 12px 32px -12px rgba(11, 29, 74, 0.35);
+  list-style: none;
+}
+
+.sk-suggestions li {
+  padding: 10px 18px;
+  cursor: pointer;
+}
+
+.sk-suggestions li span {
+  color: #4a5b80;
+  font-size: 14px;
+}
+
+.sk-suggestions li:hover,
+.sk-suggestions li.is-actif {
+  background: #eef3fb;
+}
+
+.sk-resultat {
+  margin-top: 16px;
+}
+
+.sk-rayons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.sk-rayons button {
+  padding: 6px 14px;
+  border: 1px solid #c9d2e3;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--rs-nuit);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sk-rayons button[aria-pressed="true"] {
+  border-color: var(--rs-nuit);
+  background: var(--rs-nuit);
+  color: #fff;
+}
+
+.sk-carte {
+  height: min(420px, 60vh);
+  border: 2px solid var(--rs-nuit);
+  border-radius: 14px;
+}
+
+.sk-resultat-titre {
+  margin: 16px 0 4px;
+  font-weight: 700;
+}
+
+.sk-autour {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sk-autour li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #d8deea;
+}
+
+.sk-autour a {
+  color: var(--rs-nuit);
+  font-weight: 600;
+}
+
+.sk-autour-km {
+  margin-left: auto;
+  color: #4a5b80;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.sk-autour .sk-autour-aller {
+  color: var(--rs-bleu);
+  font-size: 14px;
+}
+
+.sk-autour .sk-autour-app {
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 14px 16px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--rs-vent);
+}
+
+.sk-autour-app a {
+  color: var(--rs-nuit);
+  text-decoration: underline;
 }
 
 .site-footer a {
