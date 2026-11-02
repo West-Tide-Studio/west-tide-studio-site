@@ -632,3 +632,18 @@ img {
     align-items: flex-start;
   }
 }
+
+/* Sous la carte de RideSeek : les rubriques du site (spots de surf, skateparks). */
+.app-feature-liens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 16px 0 0;
+}
+
+.app-feature-liens a {
+  font-weight: 700;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

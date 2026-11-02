@@ -1,0 +1,113 @@
+/*
+ * Les pages « Spots de surf » (/rideseek/surf/), fabriquées par
+ * where2ride/scripts/build-surf-pages.mjs. Elles reprennent les blocs des
+ * pages Skateparks (skateparks.css), côté océan : bleu et cyan au lieu du
+ * béton orange.
+ */
+
+.su .sk-tete {
+  background:
+    radial-gradient(90% 80% at 100% 0%, rgba(55, 211, 234, 0.22), transparent 60%),
+    var(--rs-papier);
+}
+
+/* Le niveau, en pastille : du plus doux au plus engagé. */
+.su-niveau {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--rs-nuit);
+  white-space: nowrap;
+}
+
+.su-niveau-debutant { background: #c8f0d2; }
+.su-niveau-intermediaire { background: #c9ecf6; }
+.su-niveau-confirme { background: #ffe1b8; }
+.su-niveau-expert { background: #ffc9c0; }
+
+.su-spot h3 a {
+  color: var(--rs-nuit);
+  text-decoration: none;
+}
+
+.su-spot h3 a:hover {
+  color: var(--rs-bleu);
+  text-decoration: underline;
+}
+
+.su-texte {
+  margin: 8px 0 0;
+  color: #34466e;
+}
+
+/* La page d'un spot : le texte à gauche, le direct à droite. */
+.su-fiche-grille {
+  display: grid;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .su-fiche-grille {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  }
+}
+
+.su-fiche-grille p {
+  max-width: 65ch;
+  color: #34466e;
+}
+
+.su-fiche {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+  gap: 10px;
+  margin: 24px 0 0;
+}
+
+.su-fiche div {
+  padding: 12px 14px;
+  border: 1px solid #d8deea;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.su-fiche dt {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #4a5b80;
+}
+
+.su-fiche dd {
+  margin: 4px 0 0;
+  font-weight: 600;
+  color: var(--rs-nuit);
+}
+
+.su-live {
+  color: #eaf1f2;
+}
+
+/* Le guide de l'accueil : un texte à lire, pas une liste. */
+.su-guide p {
+  max-width: 68ch;
+  color: #34466e;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.su-guide h3 {
+  margin: 28px 0 8px;
+  font-size: 22px;
+  color: var(--rs-nuit);
+}
+
+.su-guide a {
+  color: var(--rs-bleu);
+  font-weight: 600;
+}
