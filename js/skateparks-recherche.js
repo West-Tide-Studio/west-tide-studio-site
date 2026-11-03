@@ -21,7 +21,7 @@
   const rayons = bloc.querySelectorAll("[data-km]");
 
   const LEAFLET = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/";
-  const PLAY = "https://play.google.com/store/apps/details?id=com.westtidestudio.rideseek";
+  const PLAY = "https://play.google.com/store/apps/details?id=com.westtidestudio.rideseek&referrer=utm_source%3Dwesttidestudio%26utm_medium%3Dsite%26utm_campaign%3Dskateparks";
   const AU_MOINS = 3;
 
   let index = null;
