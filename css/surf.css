@@ -111,3 +111,16 @@
   color: var(--rs-bleu);
   font-weight: 600;
 }
+
+/* Listes de spots : le détail (commune · niveau · distance) est plus long que
+   celui des skateparks ; il passe sous le nom au lieu de déborder sur la
+   colonne voisine. */
+.su .sk-communes li {
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2px;
+}
+
+.su .sk-communes span {
+  white-space: normal;
+}
