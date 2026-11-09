@@ -276,25 +276,51 @@
   background: var(--rs-ciel);
 }
 
-/* La recherche par ville, et la carte des parks autour. */
-.sk-recherche {
-  max-width: 720px;
+/*
+ * La carte des parks (9 nov.) : ouverte d'entrée, la recherche au-dessus,
+ * la liste des parks visibles à droite (en dessous sur un téléphone).
+ */
+.sk-explorer {
   margin-top: 28px;
 }
 
-.sk-recherche-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 700;
+.sk-cache {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.sk-barre {
+  display: flex;
+  gap: 10px;
 }
 
 .sk-recherche-champ {
   position: relative;
+  flex: 1;
+  min-width: 0;
 }
 
-.sk-recherche input {
+.sk-loupe {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  width: 22px;
+  height: 22px;
+  transform: translateY(-50%);
+  fill: none;
+  stroke: #4a5b80;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.sk-explorer input {
   width: 100%;
-  padding: 14px 18px;
+  padding: 14px 16px 14px 48px;
   border: 2px solid var(--rs-nuit);
   border-radius: 14px;
   background: #fff;
@@ -303,14 +329,49 @@
   font-size: 18px;
 }
 
-.sk-recherche input:focus {
+.sk-explorer input:focus,
+.sk-explorer button:focus-visible {
   outline: 3px solid rgba(30, 111, 217, 0.35);
   outline-offset: 1px;
 }
 
+.sk-moi {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--rs-bleu);
+  color: #fff;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sk-moi:hover {
+  background: var(--rs-ciel);
+}
+
+.sk-moi[aria-busy="true"] {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.sk-moi svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
 .sk-suggestions {
   position: absolute;
-  z-index: 1000;
+  z-index: 1100;
   top: calc(100% + 6px);
   left: 0;
   right: 0;
@@ -338,17 +399,26 @@
   background: #eef3fb;
 }
 
-.sk-resultat {
-  margin-top: 16px;
-}
-
-.sk-rayons {
+.sk-options {
   display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin: 12px 0;
 }
 
-.sk-rayons button {
+.sk-filtres,
+.sk-zones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sk-filtres button,
+.sk-zones button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 6px 14px;
   border: 1px solid #c9d2e3;
   border-radius: 999px;
@@ -360,24 +430,66 @@
   cursor: pointer;
 }
 
-.sk-rayons button[aria-pressed="true"] {
+.sk-filtres button[aria-pressed="true"] {
   border-color: var(--rs-nuit);
   background: var(--rs-nuit);
   color: #fff;
 }
 
-.sk-carte {
-  height: min(420px, 60vh);
+.sk-zones button:hover,
+.sk-filtres button:hover {
+  border-color: var(--rs-nuit);
+}
+
+.sk-zones[hidden] {
+  display: none;
+}
+
+/* Les couleurs des épingles de l'app : orange le skate, vert le pumptrack. */
+.sk-point {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--rs-nuit);
+  border-radius: 50%;
+}
+
+.sk-point-skate { background: #f08a24; }
+.sk-point-pump { background: #7cb342; }
+
+.sk-explorer-corps {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  overflow: hidden;
+  height: min(600px, 72vh);
   border: 2px solid var(--rs-nuit);
   border-radius: 14px;
+  background: #fff;
+}
+
+.sk-carte {
+  height: 100%;
+  min-height: 0;
+}
+
+.sk-liste {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  border-left: 2px solid var(--rs-nuit);
 }
 
 .sk-resultat-titre {
-  margin: 16px 0 4px;
+  margin: 0;
+  padding: 14px 16px;
+  border-bottom: 1px solid #d8deea;
+  font-size: 15px;
   font-weight: 700;
 }
 
 .sk-autour {
+  flex: 1;
+  overflow-y: auto;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -385,50 +497,177 @@
 
 .sk-autour li {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 4px 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid #d8deea;
+  border-bottom: 1px solid #e3e8f1;
 }
 
-.sk-autour a {
+.sk-autour-park {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 10px 8px 10px 16px;
+  border: 0;
+  background: none;
   color: var(--rs-nuit);
-  font-weight: 600;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sk-autour-park:hover {
+  background: #eef3fb;
+}
+
+.sk-autour-nom {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.sk-autour-nom strong,
+.sk-autour-nom span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sk-autour-nom strong {
+  font-size: 15px;
+}
+
+.sk-autour-nom span {
+  color: #4a5b80;
+  font-size: 13px;
 }
 
 .sk-autour-km {
-  margin-left: auto;
   color: #4a5b80;
-  font-size: 14px;
+  font-size: 13px;
   white-space: nowrap;
 }
 
 .sk-autour .sk-autour-aller {
+  padding: 10px 16px 10px 8px;
   color: var(--rs-bleu);
   font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .sk-autour .sk-autour-app {
   justify-content: space-between;
-  margin-top: 8px;
-  padding: 14px 16px;
+  gap: 8px 12px;
+  flex-wrap: wrap;
+  margin: 8px 12px;
+  padding: 12px 14px;
   border: 0;
-  border-radius: 14px;
+  border-radius: 12px;
   background: var(--rs-vent);
+  font-size: 14px;
 }
 
 .sk-autour-app a {
   color: var(--rs-nuit);
+  font-weight: 700;
   text-decoration: underline;
+}
+
+/* Les grappes de parks quand on dézoome. */
+.leaflet-marker-icon.sk-grappe {
+  display: grid;
+  place-items: center;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: var(--rs-nuit);
+  box-shadow: 0 0 0 2px var(--rs-nuit), 0 4px 10px -2px rgba(11, 29, 74, 0.5);
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.sk-bulle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  font-family: "Archivo", system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--rs-nuit);
+}
+
+.sk-bulle strong {
+  font-size: 16px;
+}
+
+.sk-bulle-liens {
+  display: flex;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.sk-bulle-liens a {
+  color: var(--rs-bleu) !important;
+  font-weight: 700;
 }
 
 .site-footer a {
   color: inherit;
 }
 
+@media (max-width: 899px) {
+  .sk-explorer-corps {
+    display: block;
+    height: auto;
+    overflow: visible;
+    border: 0;
+    background: none;
+  }
+
+  .sk-carte {
+    height: 62vh;
+    min-height: 320px;
+    border: 2px solid var(--rs-nuit);
+    border-radius: 14px;
+  }
+
+  .sk-liste {
+    margin-top: 12px;
+    border: 2px solid var(--rs-nuit);
+    border-radius: 14px;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .sk-autour {
+    max-height: 60vh;
+  }
+}
+
 @media (max-width: 560px) {
   .container {
     padding: 0 16px;
   }
+
+  .sk-moi {
+    padding: 0 12px;
+    font-size: 0;
+    gap: 0;
+  }
+
+  .sk-moi svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .sk-explorer input {
+    font-size: 16px;
+  }
+}
+
+.sk-autour li.is-choisi {
+  background: #eef3fb;
+  box-shadow: inset 4px 0 0 var(--rs-bleu);
 }

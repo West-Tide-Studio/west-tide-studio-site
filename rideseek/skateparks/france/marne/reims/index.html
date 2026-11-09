@@ -65,22 +65,38 @@
         <h1 class="display">Skateparks à Reims</h1>
         <p class="sk-chapo">Reims compte 3 skateparks et 2 pumptracks. Pour chacun, ce qu'on en sait et le chemin pour y aller.</p>
         
-        <div class="sk-recherche" data-recherche>
-          <label class="sk-recherche-label" for="sk-ville">Des parks près de chez toi</label>
-          <div class="sk-recherche-champ">
-            <input id="sk-ville" type="search" placeholder="Cherche une ville…" autocomplete="off"
-              role="combobox" aria-expanded="false" aria-controls="sk-suggestions" aria-autocomplete="list">
-            <ul id="sk-suggestions" class="sk-suggestions" role="listbox" hidden></ul>
-          </div>
-          <div class="sk-resultat" hidden>
-            <div class="sk-rayons" role="group" aria-label="Distance">
-              <button type="button" data-km="5">5 km</button>
-              <button type="button" data-km="10" aria-pressed="true">10 km</button>
-              <button type="button" data-km="20">20 km</button>
+        <div class="sk-explorer" data-recherche>
+          <div class="sk-barre">
+            <div class="sk-recherche-champ">
+              <label class="sk-cache" for="sk-ville">Ta ville ou ton code postal</label>
+              <svg class="sk-loupe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+              <input id="sk-ville" type="search" placeholder="Ta ville ou ton code postal…" autocomplete="off"
+                role="combobox" aria-expanded="false" aria-controls="sk-suggestions" aria-autocomplete="list">
+              <ul id="sk-suggestions" class="sk-suggestions" role="listbox" hidden></ul>
             </div>
-            <div class="sk-carte" aria-label="Carte des parks autour"></div>
-            <p class="sk-resultat-titre" aria-live="polite"></p>
-            <ul class="sk-autour"></ul>
+            <button type="button" class="sk-moi" data-moi>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="7.5"/></svg>
+              Autour de moi
+            </button>
+          </div>
+          <div class="sk-options">
+            <div class="sk-filtres" role="group" aria-label="Type de park">
+              <button type="button" data-type="tous" aria-pressed="true">Tout</button>
+              <button type="button" data-type="skate" aria-pressed="false"><span class="sk-point sk-point-skate" aria-hidden="true"></span>Skateparks</button>
+              <button type="button" data-type="pump" aria-pressed="false"><span class="sk-point sk-point-pump" aria-hidden="true"></span>Pumptracks</button>
+            </div>
+            <div class="sk-zones" role="group" aria-label="Aller à" hidden>
+              <button type="button" data-zone="france">France</button>
+              <button type="button" data-zone="belgique">Belgique</button>
+              <button type="button" data-zone="quebec">Québec</button>
+            </div>
+          </div>
+          <div class="sk-explorer-corps">
+            <div class="sk-carte" role="region" aria-label="Carte des parks"></div>
+            <div class="sk-liste">
+              <p class="sk-resultat-titre" aria-live="polite">Chargement de la carte…</p>
+              <ul class="sk-autour"></ul>
+            </div>
           </div>
         </div>
       </div>
