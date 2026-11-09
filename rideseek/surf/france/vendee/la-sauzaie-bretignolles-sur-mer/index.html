@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="/css/rideseek.css">
   <link rel="stylesheet" href="/css/skateparks.css">
   <link rel="stylesheet" href="/css/surf.css">
+  <link rel="stylesheet" href="/css/previsions.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Spots de surf","item":"https://www.westtidestudio.com/rideseek/surf/"},{"@type":"ListItem","position":2,"name":"France","item":"https://www.westtidestudio.com/rideseek/surf/#france"},{"@type":"ListItem","position":3,"name":"Vendée","item":"https://www.westtidestudio.com/rideseek/surf/france/vendee/"},{"@type":"ListItem","position":4,"name":"La Sauzaie (Brétignolles-sur-Mer)","item":"https://www.westtidestudio.com/rideseek/surf/france/vendee/la-sauzaie-bretignolles-sur-mer/"}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Place","name":"La Sauzaie (Brétignolles-sur-Mer)","description":"Récif rapide et creux. Le spot emblématique de Vendée.","url":"https://www.westtidestudio.com/rideseek/surf/france/vendee/la-sauzaie-bretignolles-sur-mer/","geo":{"@type":"GeoCoordinates","latitude":46.645551,"longitude":-1.90175},"address":{"@type":"PostalAddress","addressLocality":"Bretignolles-sur-Mer","addressRegion":"Vendée","addressCountry":"FR"}}</script>
   <script>
@@ -101,6 +102,39 @@
             <p class="spot-live-erreur">Conditions indisponibles pour le moment.</p>
             <p class="spot-live-source">Houle et vent : Open-Meteo, comme dans l'app.</p>
           </aside>
+      </div>
+    </section>
+    
+    <section class="sk-section prev-section">
+      <div class="container">
+        <div class="prev prev-surf" data-previsions="surf"
+          data-lat="46.6456" data-lon="-1.9018" data-tz="Europe/Paris" data-orientation="270">
+          <div class="prev-tete">
+            <h2>Houle et vent : les 3 prochains jours</h2>
+            <a class="prev-creneau" href="https://play.google.com/store/apps/details?id=com.westtidestudio.rideseek&referrer=utm_source%3Dwesttidestudio%26utm_medium%3Dsite%26utm_campaign%3Dsurf-previsions" data-prev-app="creneau">
+              <span>Meilleur créneau&nbsp;:</span>
+              <span class="prev-creneau-flou" aria-hidden="true"></span>
+              <svg class="prev-cadenas" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></svg>
+              <span class="sk-cache">dans l'app RideSeek</span>
+            </a>
+          </div>
+          <div class="prev-jours" data-prev-jours>
+            <article class="prev-jour is-squelette" aria-hidden="true"><h3>&nbsp;</h3><div class="prev-demi"></div><div class="prev-demi"></div></article>
+            <article class="prev-jour is-squelette" aria-hidden="true"><h3>&nbsp;</h3><div class="prev-demi"></div><div class="prev-demi"></div></article>
+            <article class="prev-jour is-squelette" aria-hidden="true"><h3>&nbsp;</h3><div class="prev-demi"></div><div class="prev-demi"></div></article>
+            <a class="prev-jour prev-verrou" href="https://play.google.com/store/apps/details?id=com.westtidestudio.rideseek&referrer=utm_source%3Dwesttidestudio%26utm_medium%3Dsite%26utm_campaign%3Dsurf-previsions" data-prev-app="jours-suivants">
+              <span class="prev-flou" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+              <span class="prev-verrou-texte">
+                <svg class="prev-cadenas" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></svg>
+                <strong>Les 6 jours suivants</strong>
+                <span>La houle et le vent heure par heure, la marée et son coefficient, et la note du spot pour chaque créneau.</span>
+                <span class="prev-bouton"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.2c-.3.3-.4.7-.4 1.2v17.2c0 .5.1.9.4 1.2l9.6-9.8-9.6-9.8zm10.8 11L16.9 16 5.4 22.4l9-9.2zm0-2.4-9-9.2L16.9 8l-2.5 2.8zm3.7-2.1 2.9 1.6c.9.5.9 1.3 0 1.8l-2.9 1.6-2.7-2.5 2.7-2.5z"/></svg> Voir dans RideSeek</span>
+              </span>
+            </a>
+          </div>
+          <p class="prev-erreur">Prévisions indisponibles pour le moment. Elles sont toujours dans l'app.</p>
+          <p class="prev-source">Prévisions Open-Meteo, les mêmes que dans l'app. Le vent est comparé à l'orientation du spot.</p>
+        </div>
       </div>
     </section>
     <section class="sk-section sk-voisines">
@@ -187,5 +221,6 @@
   <script src="/js/main.js"></script>
   <script src="/js/surf-recherche.js" defer></script>
   <script src="/js/spot-live.js" defer></script>
+  <script src="/js/previsions.js" defer></script>
 </body>
 </html>
