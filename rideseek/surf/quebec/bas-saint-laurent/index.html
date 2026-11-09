@@ -67,22 +67,40 @@
         <h1 class="display">Spots de surf de Bas-Saint-Laurent</h1>
         <p class="sk-chapo">1 spot : 1 débutant. Pour chacun, la houle qui rentre, le vent qui le rend propre et la marée qui lui va.</p>
         
-        <div class="sk-recherche" data-recherche-surf>
-          <label class="sk-recherche-label" for="su-ville">Les spots près de chez toi</label>
-          <div class="sk-recherche-champ">
-            <input id="su-ville" type="search" placeholder="Cherche une ville…" autocomplete="off"
-              role="combobox" aria-expanded="false" aria-controls="su-suggestions" aria-autocomplete="list">
-            <ul id="su-suggestions" class="sk-suggestions" role="listbox" hidden></ul>
-          </div>
-          <div class="sk-resultat" hidden>
-            <div class="sk-rayons" role="group" aria-label="Distance">
-              <button type="button" data-km="15">15 km</button>
-              <button type="button" data-km="30" aria-pressed="true">30 km</button>
-              <button type="button" data-km="60">60 km</button>
+        <div class="sk-explorer" data-recherche-surf>
+          <div class="sk-barre">
+            <div class="sk-recherche-champ">
+              <label class="sk-cache" for="su-ville">Ta ville ou ton code postal</label>
+              <svg class="sk-loupe" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+              <input id="su-ville" type="search" placeholder="Ta ville ou ton code postal…" autocomplete="off"
+                role="combobox" aria-expanded="false" aria-controls="su-suggestions" aria-autocomplete="list">
+              <ul id="su-suggestions" class="sk-suggestions" role="listbox" hidden></ul>
             </div>
-            <div class="sk-carte" aria-label="Carte des spots autour"></div>
-            <p class="sk-resultat-titre" aria-live="polite"></p>
-            <ul class="sk-autour"></ul>
+            <button type="button" class="sk-moi" data-moi>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="7.5"/></svg>
+              Autour de moi
+            </button>
+          </div>
+          <div class="sk-options">
+            <div class="sk-filtres" role="group" aria-label="Niveau">
+              <button type="button" data-niveau="tous" aria-pressed="true">Tous</button>
+              <button type="button" data-niveau="debutant" aria-pressed="false"><span class="sk-point su-point-debutant" aria-hidden="true"></span>Débutant</button>
+              <button type="button" data-niveau="intermediaire" aria-pressed="false"><span class="sk-point su-point-intermediaire" aria-hidden="true"></span>Intermédiaire</button>
+              <button type="button" data-niveau="confirme" aria-pressed="false"><span class="sk-point su-point-confirme" aria-hidden="true"></span>Confirmé</button>
+              <button type="button" data-niveau="expert" aria-pressed="false"><span class="sk-point su-point-expert" aria-hidden="true"></span>Expert</button>
+            </div>
+            <div class="sk-zones" role="group" aria-label="Aller à" hidden>
+              <button type="button" data-zone="france">France</button>
+              <button type="button" data-zone="belgique">Belgique</button>
+              <button type="button" data-zone="quebec">Québec</button>
+            </div>
+          </div>
+          <div class="sk-explorer-corps">
+            <div class="sk-carte" role="region" aria-label="Carte des spots"></div>
+            <div class="sk-liste">
+              <p class="sk-resultat-titre" aria-live="polite">Chargement de la carte…</p>
+              <ul class="sk-autour"></ul>
+            </div>
           </div>
         </div>
       </div>

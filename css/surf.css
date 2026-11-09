@@ -124,3 +124,13 @@
 .su .sk-communes span {
   white-space: normal;
 }
+
+/* Les ronds de niveau de la carte (9 nov.) : les pastilles, en plus franc. */
+.su-point-debutant { background: #3fae5a; }
+.su-point-intermediaire { background: #19b5c9; }
+.su-point-confirme { background: #f08a24; }
+.su-point-expert { background: #e0503c; }
+
+.sk-bulle .su-niveau {
+  margin: 0;
+}
