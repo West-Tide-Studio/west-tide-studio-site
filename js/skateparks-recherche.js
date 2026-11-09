@@ -108,15 +108,11 @@
     const { lieux } = donnees;
     parks = donnees.parks.map(([lat, lon, nom, pump, i]) => ({ lat, lon, nom, pump: !!pump, lieu: lieux[i] }));
 
-    carte = L.map(bloc.querySelector(".sk-carte"), { scrollWheelZoom: false });
+    carte = L.map(bloc.querySelector(".sk-carte"), { scrollWheelZoom: true });
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
       attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(carte);
-
-    // La molette ne zoome qu'après un clic sur la carte : sinon la page se coince.
-    carte.on("click", () => carte.scrollWheelZoom.enable());
-    carte.getContainer().addEventListener("mouseleave", () => carte.scrollWheelZoom.disable());
 
     grappe = L.markerClusterGroup({
       chunkedLoading: true,
