@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spots de surf du Nord : 1 spot | RideSeek</title>
-  <meta name="description" content="Les 1 spot de surf du Nord : niveau, houle qui rentre, vent offshore, marée. Et les conditions en direct de chacun.">
+  <title>Spots de surf du Nord (1) : prévisions et conditions | RideSeek</title>
+  <meta name="description" content="Les 1 spot de surf du Nord : niveau, houle qui rentre, vent offshore, marée, et les prévisions des 3 prochains jours pour chacun.">
   <link rel="canonical" href="https://www.westtidestudio.com/rideseek/surf/france/nord/">
   <link rel="icon" type="image/png" href="/assets/Logo%20simple%20512x512.png">
-  <meta property="og:title" content="Spots de surf du Nord : 1 spot | RideSeek">
-  <meta property="og:description" content="Les 1 spot de surf du Nord : niveau, houle qui rentre, vent offshore, marée. Et les conditions en direct de chacun.">
+  <meta property="og:title" content="Spots de surf du Nord (1) : prévisions et conditions | RideSeek">
+  <meta property="og:description" content="Les 1 spot de surf du Nord : niveau, houle qui rentre, vent offshore, marée, et les prévisions des 3 prochains jours pour chacun.">
   <meta property="og:url" content="https://www.westtidestudio.com/rideseek/surf/france/nord/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
@@ -26,7 +26,8 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Spots de surf du Nord","numberOfItems":1,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Place","name":"Dunkerque","description":"Beach break.","url":"https://www.westtidestudio.com/rideseek/surf/france/nord/dunkerque/","geo":{"@type":"GeoCoordinates","latitude":51.050269,"longitude":2.368647},"address":{"@type":"PostalAddress","addressLocality":"Dunkerque","addressRegion":"Nord","addressCountry":"FR"}}}]}</script>
   <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="init push capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureFlagEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset isIdentified removeCapturedEventCallback getRemoteConfig".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||(window.posthog=[]));
-    posthog.init('phc_wFN9BkVgBuoKk4JwGHN5Sdj8BKcPyCkNKsmsVLN5mBnj', {
+    var wtsInterne = false; try { var m = location.search.match(/[?&]interne=([01])/); if (m) localStorage.setItem('wts_interne', m[1]); wtsInterne = localStorage.getItem('wts_interne') === '1'; } catch (e) {}
+    if (!wtsInterne) posthog.init('phc_wFN9BkVgBuoKk4JwGHN5Sdj8BKcPyCkNKsmsVLN5mBnj', {
       api_host: 'https://eu.i.posthog.com',
       person_profiles: 'identified_only',
       persistence: 'memory',

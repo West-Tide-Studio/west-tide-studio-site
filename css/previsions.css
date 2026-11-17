@@ -1,9 +1,26 @@
 /*
- * Les 3 prochains jours (9 nov. 2026) : le bloc des pages Surf et Skateparks,
+ * Les 3 prochains jours (17 nov. 2026) : le bloc des pages Surf et Skateparks,
  * écrit par where2ride/scripts/lib/site.mjs (blocPrevisions) et rempli par
- * js/previsions.js. Trois cartes de jour, puis une quatrième, floutée et
- * verrouillée : ce que l'app montre en plus.
+ * js/previsions.js. Dessiné comme l'app : les onglets des jours (Segmented),
+ * puis, pour le surf, la frise heure par heure (hour-timeline.tsx) et, pour
+ * les parks, une page par jour (weather-carousel.tsx). Au-delà du 3e jour,
+ * le défilement continue en grisé, avec l'appel à installer l'app.
+ *
+ * Les couleurs et les mesures sont celles de l'app (src/theme) : texte nuit
+ * #021859, gris #5E6B94, bordure #D1D5E1, surbrillance #88C1F2, onglet choisi
+ * #3D9DF2, vent offshore #62A005, colonnes de 70 px.
  */
+
+.prev {
+  --prev-texte: #021859;
+  --prev-gris: #5e6b94;
+  --prev-bord: #d1d5e1;
+  --prev-accent: #88c1f2;
+  --prev-onglet: #3d9df2;
+  --prev-vert: #62a005;
+  --prev-colonne: 70px;
+  color: var(--prev-texte);
+}
 
 .prev-tete {
   display: flex;
@@ -11,77 +28,271 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px 24px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
-.prev-tete h2 {
-  margin: 0;
-}
+.prev-tete h2 { margin: 0; }
 
-.prev-jours {
-  display: grid;
-  gap: 14px;
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 640px) {
-  .prev-jours { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-@media (min-width: 1080px) {
-  .prev-jours { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-}
-
-.prev-jour {
+/* Les onglets des jours : le `Segmented` de l'app. */
+.prev-onglets {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  min-width: 0;
-  padding: 16px 16px 14px;
-  border: 1px solid #d8deea;
-  border-radius: 16px;
+  max-width: 560px;
+  border: 1px solid var(--prev-bord);
+  border-radius: 8px;
   background: #fff;
+  overflow: hidden;
 }
 
-.prev-jour h3 {
-  margin: 0;
-  font-size: 17px;
-  color: var(--rs-nuit);
+.prev-onglet {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 36px;
+  padding: 4px 6px;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--prev-texte);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
-.prev-demi {
+.prev-onglet + .prev-onglet { border-left: 1px solid var(--prev-bord); }
+.prev-onglet[aria-selected="true"] { background: var(--prev-onglet); color: var(--prev-texte); }
+.prev-onglet:not([aria-selected="true"]):hover { background: #e4effb; }
+.prev-onglet:focus-visible { outline: 2px solid var(--prev-onglet); outline-offset: -2px; }
+
+.prev-onglet-plus {
+  flex: 0.9;
+  color: var(--prev-gris);
+}
+
+.prev-onglet-plus .prev-cadenas { width: 13px; height: 13px; }
+
+.prev-onglet.is-squelette { background: #f1f4f9; }
+
+/* Le cadre de la frise : un trait dessus, un trait dessous, comme l'app. */
+.prev-cadre {
+  position: relative;
+  margin-top: 12px;
+  border-top: 1px solid var(--prev-bord);
+  border-bottom: 1px solid var(--prev-bord);
+}
+
+.prev-frise,
+.prev-pages {
+  position: relative;
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--prev-bord) transparent;
+  cursor: grab;
+  outline: none;
+}
+
+.prev-frise.is-tire,
+.prev-pages.is-tire {
+  scroll-snap-type: none;
+  cursor: grabbing;
+  user-select: none;
+}
+
+.prev-frise:focus-visible,
+.prev-pages:focus-visible { box-shadow: inset 0 0 0 2px var(--prev-onglet); }
+
+/* Le milieu de la frise porte la surbrillance : une cale avant la première
+   colonne lui permet de l'atteindre. Une cale, pas une marge intérieure de la
+   frise : celle-ci décalerait aussi l'appel collé au bord, plus loin. */
+.prev-cadre { container-type: inline-size; }
+.prev-colonnes::before {
+  content: "";
+  flex: none;
+  width: calc(50cqw - var(--prev-colonne) / 2);
+}
+
+.prev-colonnes {
+  display: flex;
+  flex: none;
+  min-height: 150px;
+}
+
+/* Sans données, la partie grisée serait la seule cible du magnétisme : la
+   frise s'y collerait, et y resterait une fois les jours arrivés. */
+.prev:not(.is-ready) [data-prev-defile] { scroll-snap-type: none; }
+
+/* Une colonne : le vent au-dessus du trait, les vagues en dessous. */
+.prev-col {
+  flex: none;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding-top: 12px;
-  border-top: 1px solid #eef1f6;
-}
-
-.prev-demi-nom {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 0;
+  gap: 4px;
+  width: var(--prev-colonne);
+  margin: 4px 0;
+  padding: 6px 0;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  font: inherit;
   font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #4a5b80;
+  line-height: 16px;
+  font-variant-numeric: tabular-nums;
+  color: var(--prev-texte);
+  scroll-snap-align: center;
+  cursor: inherit;
 }
 
-.prev-demi-nom span {
+.prev-col strong { font-weight: 700; }
+.prev-col-heure,
+.prev-col-gris { color: var(--prev-gris); }
+.prev-col.is-active { background: var(--prev-accent); }
+.prev-col.is-active .prev-col-heure,
+.prev-col.is-active .prev-col-gris { color: var(--prev-texte); }
+.prev-col.is-passee { opacity: 0.45; }
+
+/* Minuit : le jour qui commence, nommé au-dessus de sa première colonne. */
+.prev-col.is-minuit { position: relative; box-shadow: -1px 0 0 var(--prev-bord); border-radius: 0 8px 8px 0; }
+.prev-col.is-minuit.is-active { border-radius: 8px; }
+
+.prev-pastille {
+  padding: 0 4px;
+  border-radius: 8px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.prev-pastille.is-offshore { background: var(--prev-vert); color: #fff; }
+
+.prev-trait {
+  width: calc(var(--prev-colonne) - 24px);
+  height: 2px;
+  margin: 2px 0;
+  background: var(--prev-bord);
+}
+
+.prev-fleche {
+  flex: none;
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+
+.prev-fleche-vide { height: 15px; }
+
+/* Le détail de l'heure en surbrillance, sous la frise. */
+.prev-detail { margin-top: 16px; min-height: 64px; }
+
+.prev-detail-titre {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--prev-gris);
+}
+
+.prev-mesures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+
+.prev-mesure {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 92px;
+  color: var(--prev-texte);
+  text-decoration: none;
+}
+
+.prev-mesure > span {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--prev-gris);
+}
+
+.prev-mesure strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.prev-mesure-app strong { color: var(--prev-gris); }
+.prev-mesure-app:hover strong { color: var(--rs-bleu); }
+
+/* Parks : une page par jour. */
+.prev-jours {
+  display: flex;
+  flex: none;
+}
+
+.prev-page {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 150px;
+  padding: 12px 16px;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+}
+
+.prev-pages .prev-jours { width: 300%; }
+.prev-pages .prev-jours .prev-page { width: calc(100% / 3); }
+.prev-pages > .prev-suite { width: 100%; }
+
+.prev-ligne {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 16px;
+}
+
+.prev-ligne-nom {
+  min-width: 82px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.prev-ligne strong {
+  font-size: 16px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.prev-ligne-vent {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--prev-gris);
+}
+
+.prev-ciel-mot {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 14px;
-  text-transform: none;
-  letter-spacing: 0;
-  color: var(--rs-nuit);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--prev-gris);
 }
 
 .prev-ciel {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
@@ -89,202 +300,94 @@
   stroke-linejoin: round;
 }
 
-.prev-ciel-soleil { color: #f0a020; }
-.prev-ciel-nuageux { color: #6f86b3; }
-.prev-ciel-tresNuageux { color: #8a96ad; }
-.prev-ciel-pluie,
-.prev-ciel-orage { color: var(--rs-bleu); }
-.prev-ciel-neige { color: #5aa7d6; }
-
-.prev-mesure {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px 8px;
-  margin: 0;
-  font-size: 14px;
-  color: #34466e;
-}
-
-.prev-mesure small {
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.prev .banderole {
-  padding: 3px 9px 3px 8px;
-  font-size: 12px;
-}
-
-.prev .banderole b {
-  font-size: 18px;
-}
-
-.prev-fleche {
-  width: 16px;
-  height: 16px;
-  background: #4a5b80;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l7 18-7-4-7 4z'/%3E%3C/svg%3E") center / contain no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l7 18-7-4-7 4z'/%3E%3C/svg%3E") center / contain no-repeat;
-  transform: rotate(var(--r, 0deg));
-}
-
-.prev-relation {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 13px;
-  color: var(--rs-nuit);
-}
-
-.prev-relation::before {
-  content: "";
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-}
-
-.prev-relation[data-relation="offshore"]::before { background: #3fae3a; }
-.prev-relation[data-relation="cross"]::before { background: #b3d12a; }
-.prev-relation[data-relation="onshore"]::before { background: #ff7a45; }
-
-.prev-mesure-skate .prev-mot {
-  font-weight: 700;
-  color: var(--rs-nuit);
-}
-
-.prev-demi.is-pluie .prev-mot { color: var(--rs-bleu); }
-
 .prev-pluie {
+  font-size: 13px;
   font-weight: 600;
   color: var(--rs-bleu);
 }
 
-.prev-vent {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  margin-left: auto;
-}
+.prev-ligne.is-pluie .prev-ciel-mot { color: var(--rs-bleu); }
 
-.prev-fini {
-  margin: 0;
-  color: #6b7a99;
-  font-size: 14px;
-}
-
-/* Les morceaux réservés à l'app : flous, avec un cadenas, et cliquables. */
-.prev-cadenas {
-  flex: none;
-  width: 16px;
-  height: 16px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  stroke-linecap: round;
-}
-
-.prev-maree,
-.prev-creneau {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: #4a5b80;
-}
-
-.prev-maree {
-  margin-top: auto;
-  padding-top: 12px;
-  border-top: 1px dashed #d8deea;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.prev-maree-flou,
-.prev-creneau-flou {
-  flex: 1;
-  height: 12px;
-  border-radius: 6px;
-  background: linear-gradient(90deg, #c9ecf6 0 30%, transparent 30% 38%, #c9ecf6 38% 62%, transparent 62% 70%, #e4ecf7 70%);
-  filter: blur(3px);
-}
-
-.prev-creneau {
-  min-width: min(100%, 320px);
-  padding: 9px 14px;
-  border-radius: 999px;
-  background: var(--rs-nuit);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.prev-creneau-flou {
-  min-width: 90px;
-  background: linear-gradient(90deg, #62d13a 0 45%, transparent 45% 55%, var(--rs-vent) 55%);
-  opacity: 0.85;
-}
-
-.prev-maree:hover,
-.prev-creneau:hover { color: var(--rs-bleu); }
-.prev-creneau:hover { color: var(--rs-vent); }
-
-/* La quatrième carte. */
-.prev-verrou {
+/* Au-delà du 3e jour : grisé, et l'appel à installer l'app. */
+.prev-suite {
   position: relative;
-  overflow: hidden;
-  justify-content: center;
-  min-height: 260px;
-  border: none;
-  background: var(--rs-nuit);
-  color: #fff;
+  flex: none;
+  display: flex;
+  align-items: stretch;
+  color: var(--prev-texte);
   text-decoration: none;
+  scroll-snap-align: start;
 }
 
-.prev-flou {
-  position: absolute;
-  inset: 16px;
+.prev-fantomes {
+  display: flex;
+  filter: grayscale(1);
+  opacity: 0.55;
+}
+
+.prev-fantome {
+  flex: none;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  filter: blur(6px);
-  opacity: 0.45;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: var(--prev-colonne);
+  padding: 10px 0;
 }
 
-.prev-flou i {
+.prev-fantome i {
   display: block;
-  height: 22px;
-  border-radius: 6px;
-  background: linear-gradient(90deg, var(--rs-houle) 0 40%, transparent 40% 48%, var(--rs-vent) 48% 75%);
+  width: 34px;
+  height: 10px;
+  border-radius: 5px;
+  background: #dfe3ec;
 }
 
-.prev-skate .prev-flou i {
-  background: linear-gradient(90deg, #f0a020 0 20%, transparent 20% 28%, #cfcdc6 28% 70%);
-}
+.prev-fantome i:nth-child(3) { width: 46px; height: 2px; border-radius: 0; }
 
-.prev-verrou-texte {
-  position: relative;
+.prev-skate .prev-fantomes { position: absolute; inset: 0; justify-content: center; }
+.prev-skate .prev-fantome { width: 100%; align-items: flex-start; padding: 16px; box-sizing: border-box; }
+.prev-skate .prev-fantome i { width: 60%; height: 12px; }
+.prev-skate .prev-fantome i:nth-child(3) { width: 40%; height: 12px; border-radius: 5px; }
+
+/* L'appel reste en vue tant qu'on parcourt la partie grisée. */
+.prev-suite-appel {
+  position: sticky;
+  left: 12px;
+  align-self: center;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 6px;
+  /* Posé avant les colonnes grisées sans prendre de place : il se colle au bord
+     gauche de la frise et y reste jusqu'au bout de la partie grisée. */
+  order: -1;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 280px;
+  margin: 12px -292px 12px 12px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: var(--rs-nuit);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(2, 24, 89, 0.25);
 }
 
-.prev-verrou-texte .prev-cadenas {
-  width: 26px;
-  height: 26px;
+.prev-skate .prev-suite-appel { position: relative; left: auto; order: 0; width: min(320px, 100%); margin: 12px auto; }
+
+.prev-suite-appel .prev-cadenas {
+  width: 24px;
+  height: 24px;
   color: var(--rs-vent);
 }
 
-.prev-verrou-texte strong {
-  font-size: 20px;
-  line-height: 1.15;
+.prev-suite-appel strong {
+  font-size: 18px;
+  line-height: 1.2;
 }
 
-.prev-verrou-texte > span:not(.prev-bouton) {
+.prev-suite-appel > span:not(.prev-bouton) {
   color: #c9d5f0;
   font-size: 14px;
   line-height: 1.45;
@@ -309,22 +412,77 @@
   fill: currentColor;
 }
 
-.prev-verrou:hover .prev-bouton { background: var(--rs-vent); }
+.prev-suite:hover .prev-bouton { background: var(--rs-vent); }
 
-/* Avant les données : des cartes vides qui respirent. */
-.prev-jour.is-squelette {
-  min-height: 260px;
+.prev-cadenas {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Le meilleur créneau, flouté : dans l'app. */
+.prev-creneau {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: min(100%, 320px);
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: var(--rs-nuit);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.prev-creneau:hover { color: var(--rs-vent); }
+
+.prev-maree-flou,
+.prev-creneau-flou {
+  flex: 1;
+  height: 12px;
+  border-radius: 6px;
+  filter: blur(3px);
+}
+
+.prev-maree-flou {
+  flex: none;
+  width: 70px;
+  background: linear-gradient(90deg, #c9ecf6 0 45%, transparent 45% 55%, #e4ecf7 55%);
+}
+
+.prev-creneau-flou {
+  min-width: 90px;
+  background: linear-gradient(90deg, #62d13a 0 45%, transparent 45% 55%, var(--rs-vent) 55%);
+  opacity: 0.85;
+}
+
+/* Avant les données : la frise vide qui respire. */
+.prev:not(.is-ready):not(.is-error) [data-prev-contenu] {
+  width: 100vw;
+  max-width: 100%;
   background: linear-gradient(100deg, #fff 30%, #f1f4f9 50%, #fff 70%) 0 0 / 300% 100%;
   animation: prev-respire 1.4s ease-in-out infinite;
 }
+
+.prev-pages [data-prev-contenu] { min-height: 150px; }
 
 @keyframes prev-respire {
   to { background-position: -150% 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .prev-jour.is-squelette { animation: none; }
+  .prev:not(.is-ready) [data-prev-contenu] { animation: none; }
 }
+
+.prev.is-error .prev-cadre,
+.prev.is-error .prev-onglets,
+.prev.is-error .prev-detail { display: none; }
 
 .prev-verdict {
   display: inline-flex;
@@ -360,6 +518,44 @@
 
 .prev-source {
   margin: 14px 0 0;
+  font-size: 13px;
+  color: #6b7a99;
+}
+
+/*
+ * Le résumé des 3 jours, écrit dans la page chaque matin (17 nov. 2026) par
+ * scripts/previsions-du-jour.mjs : pour Google, et pour qui n'a pas le script.
+ * Vide tant qu'il n'a pas tourné : il ne se montre pas.
+ */
+.prev-resume {
+  margin: 18px 0 0;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: #f3f6fc;
+  color: #2a3a5c;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.prev-resume:empty { display: none; }
+
+.prev-resume h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.prev-resume ul {
+  margin: 0 0 8px;
+  padding-left: 18px;
+}
+
+.prev-resume li + li { margin-top: 4px; }
+
+.prev-resume p { margin: 0; }
+
+.prev-resume p + p { margin-top: 6px; }
+
+.prev-resume .prev-resume-maj {
   font-size: 13px;
   color: #6b7a99;
 }

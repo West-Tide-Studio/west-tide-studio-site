@@ -1,0 +1,64 @@
+# Chaque matin : les prévisions des 3 prochains jours écrites dans les pages
+# Surf et Skateparks, les dates du plan du site, puis Bing prévenu par IndexNow
+# (17 nov. 2026). Voir scripts/previsions-du-jour.mjs.
+name: Prévisions du jour
+
+on:
+  schedule:
+    - cron: '10 4 * * *' # 5 h 10 à Paris l'hiver, 6 h 10 l'été
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: previsions
+  cancel-in-progress: false
+
+jobs:
+  previsions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Écrire les prévisions
+        run: node scripts/previsions-du-jour.mjs --liste="$RUNNER_TEMP/urls.txt"
+
+      - name: Publier
+        id: publier
+        run: |
+          if git diff --quiet; then echo "Rien de changé."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -qam "Prévisions du $(date -u +%F)"
+          git push
+          echo "pousse=1" >> "$GITHUB_OUTPUT"
+
+      # Un envoi fait avec le jeton de l'action ne relance pas toujours GitHub
+      # Pages : on demande la publication, puis on l'attend avant IndexNow,
+      # pour que Bing lise les pages du jour et pas celles de la veille.
+      - name: Attendre GitHub Pages
+        if: steps.publier.outputs.pousse == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" > /dev/null || true
+          for i in $(seq 1 40); do
+            sleep 15
+            statut=$(gh api "repos/${{ github.repository }}/pages/builds/latest" --jq .status || echo inconnu)
+            echo "Pages : $statut"
+            [ "$statut" = "built" ] && exit 0
+            [ "$statut" = "errored" ] && exit 1
+          done
+          echo "Pages trop long : IndexNow attendra demain."
+          exit 1
+
+      - name: Prévenir Bing (IndexNow)
+        if: steps.publier.outputs.pousse == '1'
+        run: node scripts/indexnow.mjs "$RUNNER_TEMP/urls.txt"
