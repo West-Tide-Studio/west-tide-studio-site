@@ -138,7 +138,7 @@
           </div>
           
           <p class="prev-erreur">Prévisions indisponibles pour le moment. Elles sont toujours dans l'app.</p>
-          <div class="prev-resume" data-prev-resume><!--prev-resume--><h3>Météo à Terrebonne pour skater, du vendredi 27 novembre au dimanche 29 novembre</h3><ul><li><strong>Vendredi 27 novembre</strong> : le matin, couvert, 4°, vent de 25 km/h ; l&#39;après-midi, couvert, 5°, vent de 18 km/h.</li><li><strong>Samedi 28 novembre</strong> : le matin, couvert, 4°, vent de 4 km/h ; l&#39;après-midi, couvert, 5°, vent de 3 km/h.</li><li><strong>Dimanche 29 novembre</strong> : le matin, couvert, 5°, vent de 12 km/h ; l&#39;après-midi, couvert, 6°, vent de 10 km/h.</li></ul><p>Pas de pluie annoncée : praticable ces 3 jours.</p><p class="prev-resume-maj">Mis à jour le <time datetime="2026-11-27T13:45:22.323Z">vendredi 27 novembre à 08:45</time>.</p><!--/prev-resume--></div>
+          <div class="prev-resume" data-prev-resume><!--prev-resume--><h3>Météo à Terrebonne pour skater, du vendredi 27 novembre au dimanche 29 novembre</h3><ul><li><strong>Vendredi 27 novembre</strong> : le matin, couvert, 2°, vent de 22 km/h ; l&#39;après-midi, couvert, 3°, vent de 17 km/h.</li><li><strong>Samedi 28 novembre</strong> : le matin, couvert, 4°, vent de 7 km/h ; l&#39;après-midi, couvert, 6°, vent de 5 km/h.</li><li><strong>Dimanche 29 novembre</strong> : le matin, couvert, 6°, vent de 10 km/h ; l&#39;après-midi, couvert, 6°, vent de 11 km/h.</li></ul><p>Pas de pluie annoncée : praticable ces 3 jours.</p><p class="prev-resume-maj">Mis à jour le <time datetime="2026-11-28T00:37:39.246Z">vendredi 27 novembre à 19:37</time>.</p><!--/prev-resume--></div>
           <p class="prev-source">Prévisions Open-Meteo, les mêmes que dans l'app.</p>
         </div>
       </div>
@@ -268,24 +268,64 @@
     </section>
     <section class="sk-section sk-voisines">
       <div class="container">
-        <h2>Autour de Terrebonne</h2>
-        <ul class="sk-communes">
-          <li><a href="/rideseek/skateparks/quebec/lanaudiere/#c-mascouche">Mascouche</a>
-            <span>1 skatepark · 7 km</span></li>
-          <li><a href="/rideseek/skateparks/quebec/laurentides/#c-lorraine">Lorraine</a>
-            <span>1 skatepark · 10 km</span></li>
-          <li><a href="/rideseek/skateparks/quebec/laurentides/#c-rosemere">Rosemère</a>
-            <span>1 skatepark · 12 km</span></li>
-          <li><a href="/rideseek/skateparks/quebec/laurentides/#c-sainte-anne-des-plaines">Sainte-Anne-des-Plaines</a>
-            <span>1 skatepark · 13 km</span></li>
-          <li><a href="/rideseek/skateparks/quebec/lanaudiere/#c-charlemagne">Charlemagne</a>
-            <span>2 skateparks · 14 km</span></li>
-          <li><a href="/rideseek/skateparks/quebec/laurentides/blainville/">Blainville</a>
-            <span>3 skateparks · 15 km</span></li>
-          <li><a href="/rideseek/skateparks/quebec/laurentides/#c-sainte-therese">Sainte-Thérèse</a>
-            <span>1 skatepark · 15 km</span></li>
-          <li><a href="/rideseek/skateparks/quebec/laval/laval/">Laval</a>
-            <span>10 skateparks · 16 km</span></li>
+        <h2>Autour de Terrebonne <small>météo en direct</small></h2>
+        <ul class="sk-voisins" data-mode="skate">
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/lanaudiere/#c-mascouche" data-lat="45.7540" data-lon="-73.6206">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">1 skatepark</span></span><span class="sk-voisin-km">7 km au nord-est</span></span>
+            <strong class="sk-voisin-nom">Mascouche</strong>
+            <span class="sk-voisin-lieu">Lanaudière</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir le park</span>
+          </a></li>
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/laurentides/#c-lorraine" data-lat="45.6732" data-lon="-73.7900">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">1 skatepark</span></span><span class="sk-voisin-km">10 km à l'ouest</span></span>
+            <strong class="sk-voisin-nom">Lorraine</strong>
+            <span class="sk-voisin-lieu">Laurentides</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir le park</span>
+          </a></li>
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/laurentides/#c-rosemere" data-lat="45.6399" data-lon="-73.7862">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">1 skatepark</span></span><span class="sk-voisin-km">12 km au sud-ouest</span></span>
+            <strong class="sk-voisin-nom">Rosemère</strong>
+            <span class="sk-voisin-lieu">Laurentides</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir le park</span>
+          </a></li>
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/laurentides/#c-sainte-anne-des-plaines" data-lat="45.7688" data-lon="-73.8106">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">1 skatepark</span></span><span class="sk-voisin-km">13 km au nord-ouest</span></span>
+            <strong class="sk-voisin-nom">Sainte-Anne-des-Plaines</strong>
+            <span class="sk-voisin-lieu">Laurentides</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir le park</span>
+          </a></li>
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/lanaudiere/#c-charlemagne" data-lat="45.7294" data-lon="-73.4922">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">2 skateparks</span></span><span class="sk-voisin-km">14 km à l'est</span></span>
+            <strong class="sk-voisin-nom">Charlemagne</strong>
+            <span class="sk-voisin-lieu">Lanaudière</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir les parks</span>
+          </a></li>
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/laurentides/blainville/" data-lat="45.6790" data-lon="-73.8614">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">3 skateparks</span></span><span class="sk-voisin-km">15 km à l'ouest</span></span>
+            <strong class="sk-voisin-nom">Blainville</strong>
+            <span class="sk-voisin-lieu">1 éclairé</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir les parks</span>
+          </a></li>
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/laurentides/#c-sainte-therese" data-lat="45.6452" data-lon="-73.8467">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">1 skatepark</span></span><span class="sk-voisin-km">15 km au sud-ouest</span></span>
+            <strong class="sk-voisin-nom">Sainte-Thérèse</strong>
+            <span class="sk-voisin-lieu">Laurentides</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir le park</span>
+          </a></li>
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/laval/laval/" data-lat="45.5825" data-lon="-73.7657">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">10 skateparks</span></span><span class="sk-voisin-km">16 km au sud-ouest</span></span>
+            <strong class="sk-voisin-nom">Laval</strong>
+            <span class="sk-voisin-lieu">1 éclairé</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir les parks</span>
+          </a></li>
         </ul>
       </div>
     </section>
@@ -354,5 +394,6 @@
   <script src="/js/main.js"></script>
   <script src="/js/skateparks-recherche.js" defer></script>
   <script src="/js/previsions.js" defer></script>
+  <script src="/js/spots-autour.js" defer></script>
 </body>
 </html>

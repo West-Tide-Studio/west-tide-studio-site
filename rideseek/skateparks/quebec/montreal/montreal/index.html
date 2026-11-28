@@ -140,7 +140,7 @@
           </div>
           
           <p class="prev-erreur">Prévisions indisponibles pour le moment. Elles sont toujours dans l'app.</p>
-          <div class="prev-resume" data-prev-resume><!--prev-resume--><h3>Météo à Montréal pour skater, du vendredi 27 novembre au dimanche 29 novembre</h3><ul><li><strong>Vendredi 27 novembre</strong> : le matin, couvert, 5°, vent de 19 km/h ; l&#39;après-midi, bruine (4,7 mm), 5°, vent de 10 km/h.</li><li><strong>Samedi 28 novembre</strong> : le matin, couvert, 4°, vent de 6 km/h ; l&#39;après-midi, couvert, 4°, vent de 3 km/h.</li><li><strong>Dimanche 29 novembre</strong> : le matin, couvert, 6°, vent de 10 km/h ; l&#39;après-midi, couvert, 7°, vent de 10 km/h.</li></ul><p>Première pluie annoncée : vendredi 27 novembre après-midi. Le béton mouillé ne se ride pas.</p><p class="prev-resume-maj">Mis à jour le <time datetime="2026-11-27T13:45:22.328Z">vendredi 27 novembre à 08:45</time>.</p><!--/prev-resume--></div>
+          <div class="prev-resume" data-prev-resume><!--prev-resume--><h3>Météo à Montréal pour skater, du vendredi 27 novembre au dimanche 29 novembre</h3><ul><li><strong>Vendredi 27 novembre</strong> : le matin, couvert, 2°, vent de 18 km/h ; l&#39;après-midi, couvert, 3°, vent de 12 km/h.</li><li><strong>Samedi 28 novembre</strong> : le matin, couvert, 4°, vent de 7 km/h ; l&#39;après-midi, couvert, 5°, vent de 8 km/h.</li><li><strong>Dimanche 29 novembre</strong> : le matin, couvert, 6°, vent de 11 km/h ; l&#39;après-midi, couvert, 7°, vent de 9 km/h.</li></ul><p>Pas de pluie annoncée : praticable ces 3 jours.</p><p class="prev-resume-maj">Mis à jour le <time datetime="2026-11-28T00:37:39.254Z">vendredi 27 novembre à 19:37</time>.</p><!--/prev-resume--></div>
           <p class="prev-source">Prévisions Open-Meteo, les mêmes que dans l'app.</p>
         </div>
       </div>
@@ -595,24 +595,64 @@
     </section>
     <section class="sk-section sk-voisines">
       <div class="container">
-        <h2>Autour de Montréal</h2>
-        <ul class="sk-communes">
-          <li><a href="/rideseek/skateparks/quebec/montreal/#c-mont-royal">Mont-Royal</a>
-            <span>1 skatepark · 4 km</span></li>
-          <li><a href="/rideseek/skateparks/quebec/monteregie/#c-saint-lambert">Saint-Lambert</a>
-            <span>1 skatepark · 7 km</span></li>
-          <li><a href="/rideseek/skateparks/quebec/montreal/#c-cote-saint-luc">Côte-Saint-Luc</a>
-            <span>1 skatepark · 10 km</span></li>
-          <li><a href="/rideseek/skateparks/quebec/monteregie/longueuil/">Longueuil</a>
-            <span>4 skateparks · 12 km</span></li>
-          <li><a href="/rideseek/skateparks/quebec/laval/laval/">Laval</a>
-            <span>10 skateparks · 14 km</span></li>
-          <li><a href="/rideseek/skateparks/quebec/monteregie/#c-boucherville">Boucherville</a>
-            <span>1 skatepark · 14 km</span></li>
-          <li><a href="/rideseek/skateparks/quebec/monteregie/#c-brossard">Brossard</a>
-            <span>1 skatepark · 15 km</span></li>
-          <li><a href="/rideseek/skateparks/quebec/monteregie/#c-sainte-catherine">Sainte-Catherine</a>
-            <span>1 skatepark · 16 km</span></li>
+        <h2>Autour de Montréal <small>météo en direct</small></h2>
+        <ul class="sk-voisins" data-mode="skate">
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/montreal/#c-mont-royal" data-lat="45.5141" data-lon="-73.6394">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">1 skatepark</span></span><span class="sk-voisin-km">4 km au sud-ouest</span></span>
+            <strong class="sk-voisin-nom">Mont-Royal</strong>
+            <span class="sk-voisin-lieu">éclairé</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir le park</span>
+          </a></li>
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/monteregie/#c-saint-lambert" data-lat="45.5062" data-lon="-73.5185">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">1 skatepark</span></span><span class="sk-voisin-km">7 km au sud-est</span></span>
+            <strong class="sk-voisin-nom">Saint-Lambert</strong>
+            <span class="sk-voisin-lieu">Montérégie</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir le park</span>
+          </a></li>
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/montreal/#c-cote-saint-luc" data-lat="45.4610" data-lon="-73.6633">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">1 skatepark</span></span><span class="sk-voisin-km">10 km au sud-ouest</span></span>
+            <strong class="sk-voisin-nom">Côte-Saint-Luc</strong>
+            <span class="sk-voisin-lieu">Montréal</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir le park</span>
+          </a></li>
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/monteregie/longueuil/" data-lat="45.5118" data-lon="-73.4495">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">4 skateparks</span></span><span class="sk-voisin-km">12 km à l'est</span></span>
+            <strong class="sk-voisin-nom">Longueuil</strong>
+            <span class="sk-voisin-lieu">Montérégie</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir les parks</span>
+          </a></li>
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/laval/laval/" data-lat="45.5825" data-lon="-73.7657">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">10 skateparks</span></span><span class="sk-voisin-km">14 km à l'ouest</span></span>
+            <strong class="sk-voisin-nom">Laval</strong>
+            <span class="sk-voisin-lieu">1 éclairé</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir les parks</span>
+          </a></li>
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/monteregie/#c-boucherville" data-lat="45.6045" data-lon="-73.4455">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">1 skatepark</span></span><span class="sk-voisin-km">14 km au nord-est</span></span>
+            <strong class="sk-voisin-nom">Boucherville</strong>
+            <span class="sk-voisin-lieu">Montérégie</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir le park</span>
+          </a></li>
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/monteregie/#c-brossard" data-lat="45.4497" data-lon="-73.4557">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">1 skatepark</span></span><span class="sk-voisin-km">15 km au sud-est</span></span>
+            <strong class="sk-voisin-nom">Brossard</strong>
+            <span class="sk-voisin-lieu">éclairé</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir le park</span>
+          </a></li>
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/monteregie/#c-sainte-catherine" data-lat="45.3974" data-lon="-73.5727">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">1 skatepark</span></span><span class="sk-voisin-km">16 km au sud</span></span>
+            <strong class="sk-voisin-nom">Sainte-Catherine</strong>
+            <span class="sk-voisin-lieu">Montérégie</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir le park</span>
+          </a></li>
         </ul>
       </div>
     </section>
@@ -681,5 +721,6 @@
   <script src="/js/main.js"></script>
   <script src="/js/skateparks-recherche.js" defer></script>
   <script src="/js/previsions.js" defer></script>
+  <script src="/js/spots-autour.js" defer></script>
 </body>
 </html>

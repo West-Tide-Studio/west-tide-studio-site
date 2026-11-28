@@ -139,7 +139,7 @@
           </div>
           
           <p class="prev-erreur">Prévisions indisponibles pour le moment. Elles sont toujours dans l'app.</p>
-          <div class="prev-resume" data-prev-resume><!--prev-resume--><h3>Météo à Gatineau pour skater, du vendredi 27 novembre au dimanche 29 novembre</h3><ul><li><strong>Vendredi 27 novembre</strong> : le matin, pluie (7,9 mm), 4°, vent de 17 km/h ; l&#39;après-midi, pluie (8,6 mm), 4°, vent de 10 km/h.</li><li><strong>Samedi 28 novembre</strong> : le matin, couvert, 6°, vent de 5 km/h ; l&#39;après-midi, couvert, 6°, vent de 7 km/h.</li><li><strong>Dimanche 29 novembre</strong> : le matin, soleil, 5°, vent de 6 km/h ; l&#39;après-midi, couvert, 7°, vent de 10 km/h.</li></ul><p>Première pluie annoncée : vendredi 27 novembre matin. Le béton mouillé ne se ride pas.</p><p class="prev-resume-maj">Mis à jour le <time datetime="2026-11-27T13:45:22.328Z">vendredi 27 novembre à 08:45</time>.</p><!--/prev-resume--></div>
+          <div class="prev-resume" data-prev-resume><!--prev-resume--><h3>Météo à Gatineau pour skater, du vendredi 27 novembre au dimanche 29 novembre</h3><ul><li><strong>Vendredi 27 novembre</strong> : le matin, couvert, 4°, vent de 15 km/h ; l&#39;après-midi, pluie (7,3 mm), 4°, vent de 9 km/h.</li><li><strong>Samedi 28 novembre</strong> : le matin, couvert, 5°, vent de 6 km/h ; l&#39;après-midi, couvert, 5°, vent de 6 km/h.</li><li><strong>Dimanche 29 novembre</strong> : le matin, couvert, 6°, vent de 8 km/h ; l&#39;après-midi, couvert, 7°, vent de 10 km/h.</li></ul><p>Première pluie annoncée : vendredi 27 novembre après-midi. Le béton mouillé ne se ride pas.</p><p class="prev-resume-maj">Mis à jour le <time datetime="2026-11-28T00:37:39.255Z">vendredi 27 novembre à 19:37</time>.</p><!--/prev-resume--></div>
           <p class="prev-source">Prévisions Open-Meteo, les mêmes que dans l'app.</p>
         </div>
       </div>
@@ -308,10 +308,15 @@
     </section>
     <section class="sk-section sk-voisines">
       <div class="container">
-        <h2>Autour de Gatineau</h2>
-        <ul class="sk-communes">
-          <li><a href="/rideseek/skateparks/quebec/outaouais/#c-cantley">Cantley</a>
-            <span>1 skatepark · 10 km</span></li>
+        <h2>Autour de Gatineau <small>météo en direct</small></h2>
+        <ul class="sk-voisins" data-mode="skate">
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/outaouais/#c-cantley" data-lat="45.5581" data-lon="-75.7027">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">1 skatepark</span></span><span class="sk-voisin-km">10 km au nord</span></span>
+            <strong class="sk-voisin-nom">Cantley</strong>
+            <span class="sk-voisin-lieu">Outaouais</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir le park</span>
+          </a></li>
         </ul>
       </div>
     </section>
@@ -380,5 +385,6 @@
   <script src="/js/main.js"></script>
   <script src="/js/skateparks-recherche.js" defer></script>
   <script src="/js/previsions.js" defer></script>
+  <script src="/js/spots-autour.js" defer></script>
 </body>
 </html>

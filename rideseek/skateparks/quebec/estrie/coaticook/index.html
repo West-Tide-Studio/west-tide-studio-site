@@ -138,7 +138,7 @@
           </div>
           
           <p class="prev-erreur">Prévisions indisponibles pour le moment. Elles sont toujours dans l'app.</p>
-          <div class="prev-resume" data-prev-resume><!--prev-resume--><h3>Météo à Coaticook pour skater, du vendredi 27 novembre au dimanche 29 novembre</h3><ul><li><strong>Vendredi 27 novembre</strong> : le matin, soleil, 8°, vent de 22 km/h ; l&#39;après-midi, couvert, 9°, vent de 21 km/h.</li><li><strong>Samedi 28 novembre</strong> : le matin, couvert, 4°, vent de 9 km/h ; l&#39;après-midi, couvert, 4°, vent de 10 km/h.</li><li><strong>Dimanche 29 novembre</strong> : le matin, brouillard, 5°, vent de 9 km/h ; l&#39;après-midi, couvert, 6°, vent de 10 km/h.</li></ul><p>Pas de pluie annoncée : praticable ces 3 jours.</p><p class="prev-resume-maj">Mis à jour le <time datetime="2026-11-27T13:45:22.321Z">vendredi 27 novembre à 08:45</time>.</p><!--/prev-resume--></div>
+          <div class="prev-resume" data-prev-resume><!--prev-resume--><h3>Météo à Coaticook pour skater, du vendredi 27 novembre au dimanche 29 novembre</h3><ul><li><strong>Vendredi 27 novembre</strong> : le matin, soleil, 8°, vent de 15 km/h ; l&#39;après-midi, couvert, 8°, vent de 13 km/h.</li><li><strong>Samedi 28 novembre</strong> : le matin, couvert, 3°, vent de 10 km/h ; l&#39;après-midi, couvert, 3°, vent de 9 km/h.</li><li><strong>Dimanche 29 novembre</strong> : le matin, couvert, 5°, vent de 9 km/h ; l&#39;après-midi, couvert, 5°, vent de 10 km/h.</li></ul><p>Pas de pluie annoncée : praticable ces 3 jours.</p><p class="prev-resume-maj">Mis à jour le <time datetime="2026-11-28T00:37:39.242Z">vendredi 27 novembre à 19:37</time>.</p><!--/prev-resume--></div>
           <p class="prev-source">Prévisions Open-Meteo, les mêmes que dans l'app.</p>
         </div>
       </div>
@@ -190,12 +190,22 @@
     </section>
     <section class="sk-section sk-voisines">
       <div class="container">
-        <h2>Autour de Coaticook</h2>
-        <ul class="sk-communes">
-          <li><a href="/rideseek/skateparks/quebec/estrie/#c-compton">Compton</a>
-            <span>1 skatepark · 12 km</span></li>
-          <li><a href="/rideseek/skateparks/quebec/estrie/#c-waterville">Waterville</a>
-            <span>1 skatepark · 17 km</span></li>
+        <h2>Autour de Coaticook <small>météo en direct</small></h2>
+        <ul class="sk-voisins" data-mode="skate">
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/estrie/#c-compton" data-lat="45.2455" data-lon="-71.8276">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">1 skatepark</span></span><span class="sk-voisin-km">12 km au nord</span></span>
+            <strong class="sk-voisin-nom">Compton</strong>
+            <span class="sk-voisin-lieu">Estrie</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir le park</span>
+          </a></li>
+          <li><a class="sk-voisin" href="/rideseek/skateparks/quebec/estrie/#c-waterville" data-lat="45.2750" data-lon="-71.8906">
+            <span class="sk-voisin-tete"><span class="sk-voisin-types"><span class="sk-type sk-type-skate">1 skatepark</span></span><span class="sk-voisin-km">17 km au nord-ouest</span></span>
+            <strong class="sk-voisin-nom">Waterville</strong>
+            <span class="sk-voisin-lieu">Estrie</span>
+            <span class="sk-voisin-live"><span class="sk-voisin-temp"><b>–</b>°</span><span class="sk-voisin-etat">Météo…</span></span>
+            <span class="sk-voisin-aller">Voir le park</span>
+          </a></li>
         </ul>
       </div>
     </section>
@@ -264,5 +274,6 @@
   <script src="/js/main.js"></script>
   <script src="/js/skateparks-recherche.js" defer></script>
   <script src="/js/previsions.js" defer></script>
+  <script src="/js/spots-autour.js" defer></script>
 </body>
 </html>

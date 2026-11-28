@@ -671,3 +671,144 @@
   background: #eef3fb;
   box-shadow: inset 4px 0 0 var(--rs-bleu);
 }
+
+/*
+ * « Autour de … » et « Les spots autour » : une carte par voisin, avec les
+ * conditions de maintenant (js/spots-autour.js). Partagé avec les pages Surf.
+ */
+.sk-voisins {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sk-voisin {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  padding: 16px 18px 14px;
+  border: 1px solid #d8deea;
+  border-radius: 14px;
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(240, 138, 36, 0.12), transparent 55%),
+    #fff;
+  color: var(--rs-nuit);
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(11, 29, 74, 0.06);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.sk-voisin:hover,
+.sk-voisin:focus-visible {
+  transform: translateY(-3px);
+  border-color: #f08a24;
+  box-shadow: 0 10px 24px rgba(11, 29, 74, 0.12);
+}
+
+.sk-voisin-tete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.sk-voisin-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.sk-voisin-km {
+  color: #4a5b80;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sk-voisin-nom {
+  margin-top: 4px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.sk-voisin-lieu {
+  color: #4a5b80;
+  font-size: 14px;
+}
+
+.sk-voisin-lieu .sk-note {
+  margin-left: 4px;
+}
+
+.sk-voisin-live {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 8px;
+  min-height: 32px;
+  opacity: 0.35;
+  transition: opacity 0.4s ease;
+}
+
+.sk-voisin.is-ready .sk-voisin-live { opacity: 1; }
+.sk-voisin.is-error .sk-voisin-live { display: none; }
+
+.sk-voisin-temp {
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--rs-beton);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.sk-voisin-temp b { font-size: 18px; }
+
+.sk-voisin-etat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.sk-voisin-etat::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #8696bd;
+}
+
+.sk-voisin-etat[data-etat="offshore"]::before,
+.sk-voisin-etat[data-etat="sec"]::before { background: #3fae5a; }
+.sk-voisin-etat[data-etat="cross"]::before { background: #b9d82f; }
+.sk-voisin-etat[data-etat="onshore"]::before { background: #ff7a45; }
+.sk-voisin-etat[data-etat="mouille"]::before,
+.sk-voisin-etat[data-etat="pluie"]::before { background: #3d9df2; }
+
+.sk-voisin-aller {
+  margin-top: auto;
+  padding-top: 10px;
+  color: var(--rs-bleu);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.sk-voisin-aller::after {
+  content: " →";
+  display: inline-block;
+  transition: transform 0.18s ease;
+}
+
+.sk-voisin:hover .sk-voisin-aller::after { transform: translateX(4px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sk-voisin,
+  .sk-voisin-aller::after { transition: none; }
+  .sk-voisin:hover { transform: none; }
+}
