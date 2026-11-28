@@ -134,3 +134,129 @@
 .sk-bulle .su-niveau {
   margin: 0;
 }
+
+/* « Les spots autour » : des cartes avec les conditions de maintenant. */
+.su-autour {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.su-voisin {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  padding: 16px 18px 14px;
+  border: 1px solid #d8deea;
+  border-radius: 14px;
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(55, 211, 234, 0.14), transparent 55%),
+    #fff;
+  color: var(--rs-nuit);
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(11, 29, 74, 0.06);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.su-voisin:hover,
+.su-voisin:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--rs-houle);
+  box-shadow: 0 10px 24px rgba(11, 29, 74, 0.12);
+}
+
+.su-voisin-tete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.su-voisin-km {
+  color: #4a5b80;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.su-voisin-nom {
+  margin-top: 4px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.su-voisin-lieu {
+  color: #4a5b80;
+  font-size: 14px;
+}
+
+.su-voisin-live {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 8px;
+  min-height: 32px;
+  opacity: 0.35;
+  transition: opacity 0.4s ease;
+}
+
+.su-voisin.is-ready .su-voisin-live { opacity: 1; }
+.su-voisin.is-error .su-voisin-live { display: none; }
+
+.su-voisin-houle {
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--rs-houle);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.su-voisin-houle b { font-size: 18px; }
+.su-voisin-houle i { font-style: normal; }
+
+.su-voisin-vent {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.su-voisin-vent::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #8696bd;
+}
+
+.su-voisin-vent[data-relation="offshore"]::before { background: #3fae5a; }
+.su-voisin-vent[data-relation="cross"]::before { background: #b9d82f; }
+.su-voisin-vent[data-relation="onshore"]::before { background: #ff7a45; }
+
+.su-voisin-aller {
+  margin-top: auto;
+  padding-top: 10px;
+  color: var(--rs-bleu);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.su-voisin-aller::after {
+  content: " →";
+  display: inline-block;
+  transition: transform 0.18s ease;
+}
+
+.su-voisin:hover .su-voisin-aller::after { transform: translateX(4px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .su-voisin,
+  .su-voisin-aller::after { transition: none; }
+  .su-voisin:hover { transform: none; }
+}
